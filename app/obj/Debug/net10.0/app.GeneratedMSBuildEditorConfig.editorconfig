@@ -27,24 +27,16 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LENOVO/Documents/OneDrive - The Open University of Sri Lanka/OUSL/GovimithuruProject/Govimithuru/app/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+[C:/Users/LENOVO/Documents/OneDrive - The Open University of Sri Lanka/OUSL/GovimithuruProject/Govimithuru/app/Components/Pages/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEYXNoYm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/LENOVO/Documents/OneDrive - The Open University of Sri Lanka/OUSL/GovimithuruProject/Govimithuru/app/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LENOVO/Documents/OneDrive - The Open University of Sri Lanka/OUSL/GovimithuruProject/Govimithuru/app/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/LENOVO/Documents/OneDrive - The Open University of Sri Lanka/OUSL/GovimithuruProject/Govimithuru/app/Components/Pages/NotFound.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xOb3RGb3VuZC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/LENOVO/Documents/OneDrive - The Open University of Sri Lanka/OUSL/GovimithuruProject/Govimithuru/app/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/LENOVO/Documents/OneDrive - The Open University of Sri Lanka/OUSL/GovimithuruProject/Govimithuru/app/Components/Routes.razor]
@@ -66,3 +58,11 @@ build_metadata.AdditionalFiles.CssScope = b-zf415b4rb4
 [C:/Users/LENOVO/Documents/OneDrive - The Open University of Sri Lanka/OUSL/GovimithuruProject/Govimithuru/app/Components/Layout/ReconnectModal.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcUmVjb25uZWN0TW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-7rtsgnzsip
+
+[C:/Users/LENOVO/Documents/OneDrive - The Open University of Sri Lanka/OUSL/GovimithuruProject/Govimithuru/app/Components/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-kd7cqut6v4
+
+[C:/Users/LENOVO/Documents/OneDrive - The Open University of Sri Lanka/OUSL/GovimithuruProject/Govimithuru/app/Components/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-e9qdhd3kvc
