@@ -82,5 +82,7 @@ C:\Users\LENOVO\Documents\OneDrive - The Open University of Sri Lanka\OUSL\Govim
 C:\Users\LENOVO\Documents\OneDrive - The Open University of Sri Lanka\OUSL\GovimithuruProject\Govimithuru\app\obj\Debug\net10.0\app.pdb
 C:\Users\LENOVO\Documents\OneDrive - The Open University of Sri Lanka\OUSL\GovimithuruProject\Govimithuru\app\obj\Debug\net10.0\app.genruntimeconfig.cache
 C:\Users\LENOVO\Documents\OneDrive - The Open University of Sri Lanka\OUSL\GovimithuruProject\Govimithuru\app\obj\Debug\net10.0\ref\app.dll
-C:\Users\LENOVO\Documents\OneDrive - The Open University of Sri Lanka\OUSL\GovimithuruProject\Govimithuru\app\obj\Debug\net10.0\compressed\m5dv2g5c9e-{0}-gajkrc6fow-gajkrc6fow.gz
-C:\Users\LENOVO\Documents\OneDrive - The Open University of Sri Lanka\OUSL\GovimithuruProject\Govimithuru\app\obj\Debug\net10.0\compressed\a4u8706c5x-{0}-gajkrc6fow-gajkrc6fow.gz
+C:\Users\LENOVO\Documents\OneDrive - The Open University of Sri Lanka\OUSL\GovimithuruProject\Govimithuru\app\obj\Debug\net10.0\scopedcss\Components\Pages\Login.razor.rz.scp.css
+C:\Users\LENOVO\Documents\OneDrive - The Open University of Sri Lanka\OUSL\GovimithuruProject\Govimithuru\app\obj\Debug\net10.0\scopedcss\Components\Pages\Register.razor.rz.scp.css
+C:\Users\LENOVO\Documents\OneDrive - The Open University of Sri Lanka\OUSL\GovimithuruProject\Govimithuru\app\obj\Debug\net10.0\compressed\m5dv2g5c9e-{0}-ivz80pmue4-ivz80pmue4.gz
+C:\Users\LENOVO\Documents\OneDrive - The Open University of Sri Lanka\OUSL\GovimithuruProject\Govimithuru\app\obj\Debug\net10.0\compressed\a4u8706c5x-{0}-ivz80pmue4-ivz80pmue4.gz
