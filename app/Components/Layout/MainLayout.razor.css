@@ -9,7 +9,7 @@ main {
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, #1f5f2d 0%, #0f3d1b 85%);
 }
 
 .top-row {
@@ -27,7 +27,13 @@ main {
         text-decoration: none;
     }
 
-    .top-row ::deep a:hover, .top-row ::deep .btn-link:hover {
+    .top-row ::deep .logout-link {
+        color: #2f6130;
+        font-weight: 600;
+    }
+
+    .top-row ::deep .logout-link:hover {
+        color: #1f5f2d;
         text-decoration: underline;
     }
 
@@ -38,11 +44,15 @@ main {
 
 @media (max-width: 640.98px) {
     .top-row {
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .top-row ::deep a, .top-row ::deep .btn-link {
         margin-left: 0;
+    }
+
+    .top-row ::deep .logout-link {
+        margin: 0;
     }
 }
 

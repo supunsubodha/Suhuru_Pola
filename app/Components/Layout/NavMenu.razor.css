@@ -7,21 +7,30 @@
     position: absolute;
     top: 0.5rem;
     right: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") no-repeat center/1.75rem rgba(255, 255, 255, 0.1);
+    z-index: 10;
+    border: 1px solid rgba(59, 124, 59, 0.35);
+    border-radius: 0.5rem;
+    background-color: #3b7c3b;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.75rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-toggler:checked {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: #2f6130;
 }
 
 .top-row {
     min-height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgb(247, 247, 247);
 }
 
 .navbar-brand {
     font-size: 1.1rem;
+    color:rgb(59, 124, 59);
+    font-weight: bold;
 }
 
 .bi {
@@ -60,7 +69,7 @@
     }
 
     .nav-item ::deep .nav-link {
-        color: #d7d7d7;
+        color: #eaf7ea;
         background: none;
         border: none;
         border-radius: 4px;
@@ -72,13 +81,14 @@
     }
 
 .nav-item ::deep a.active {
-    background-color: rgba(255,255,255,0.37);
-    color: white;
+    background-color: rgba(255,255,255,0.2);
+    color: #ffffff;
+    font-weight: 600;
 }
 
 .nav-item ::deep .nav-link:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
+    background-color: rgba(255,255,255,0.12);
+    color: #ffffff;
 }
 
 .nav-scrollable {
@@ -87,6 +97,23 @@
 
 .navbar-toggler:checked ~ .nav-scrollable {
     display: block;
+}
+
+.logo {
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+.top-row .container-fluid {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0;
 }
 
 @media (min-width: 641px) {
