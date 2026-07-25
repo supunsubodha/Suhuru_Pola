@@ -4,3 +4,37 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+
+h1 {
+    text-align: center;
+    color: brown;
+}
+
+header {
+    text-align: center;
+}
+
+.logo {
+    display: block;
+    width: 100px;
+    height: auto;
+}
+
+nav {
+    background-color: #008000; /* Blue */
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav a {
+    color: white;              /* Text color */
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 15px;
+}
+
+
+nav a:hover {
+    color: black;
+}
