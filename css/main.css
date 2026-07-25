@@ -4,3 +4,61 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+
+h1 {
+    text-align: center;
+    color: brown;
+}
+
+header {
+    text-align: center;
+}
+
+.logo {
+    display: block;
+    width: 100px;
+    height: auto;
+}
+
+nav {
+    background-color: #008000; /* Blue */
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav a {
+    color: white;              /* Text color */
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 15px;
+}
+
+
+nav a:hover {
+    color: black;
+}
+
+@media (max-width: 768px) {
+    header {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav {
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color:#008000;
+    }
+
+    nav :hover {
+        color: black;
+        background-color: lightgreen;
+    }
+}
