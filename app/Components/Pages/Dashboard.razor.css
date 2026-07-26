@@ -5,3 +5,26 @@
 h1, h2{
     color:darkgreen;
 }
+.dashboard-card-section {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: space-around;
+}
+.dashboard-card {
+    background-color: rgb(255, 255, 255);
+    border-color: darkgreen;
+    border-radius: 10px;
+    color: #333333;
+    box-sizing: border-box;
+    width: 200px;
+    text-align: center;
+    min-height: 100px;
+    margin: 10px;
+}
+.dashboard-card:hover {
+    background-color: #F57C00;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
