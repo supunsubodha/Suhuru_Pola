@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Govimithuru | Home</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/script.js"></script>
 </head>
 <body>
     <!-- TODO: @Lochana aiya - Create header and navigation bar-->
     <header> <img src="images/logo.png" alt="logo" class="logo">
-        <nav>
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+        <nav id="Menu" class="menu">
             <a href="#">Home</a>
             <a href="#">Crops</a>
             <a href="#">Weather</a>

@@ -39,11 +39,15 @@ nav a:hover {
     color: black;
 }
 
+.menu-btn {
+    display: none;
+}
+
 @media (max-width: 768px) {
     header {
         text-align: center;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: auto auto;
         align-items: center;
     }
 
@@ -52,13 +56,53 @@ nav a:hover {
         top: 0;
         height: 100vh;
         width: 100%;
-        display: flex;
-        flex-direction: column;
+        display: grid;
         background-color:#008000;
     }
 
     nav :hover {
         color: black;
-        background-color: lightgreen;
     }
+
+    .menu{
+        display:none;
+        flex-direction:column;
+        background:#1b4d22;
+    }
+ 
+    .menu a{
+        color:white;
+        text-decoration:none;
+        padding:15px;
+        border-bottom:1px solid rgba(255,255,255,0.2);
+    }
+
+    .menu a:hover{
+        background:#2f5d34;
+    }
+
+    .menu.show{
+        display:grid;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+    .menu-btn{
+        display: flex;
+        font-size:28px;
+        background:#2f5d34;
+        color:white;
+        border:none;
+        border-radius:5px;
+        width:70px;
+        height: 35px;
+        cursor:pointer;
+        margin-left: auto;
+        justify-content: center;
+        align-items: center;   
+    }
+
+    .menu-btn:hover{
+        background: #39703f;
+    }
+
 }
