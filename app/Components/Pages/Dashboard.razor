@@ -6,7 +6,7 @@
 <PageTitle>Govimithuru | Dashboard</PageTitle>
 
 <section id= "welcome-section">
-<h2>Hi @name 👋🏽</h2>
+<h2>Hi, <span id="user-name">@name</span> 👋🏽</h2>
 <h1>Welcome to the vegitable trading portal</h1>
 </section>
 <hr>
@@ -21,7 +21,7 @@
 	}
 </section>
 @code {
-	string name { get; set;} = "Supun Subodha";
+	string name { get; set;} = "Lara Croft";
 	string role { get; set;} = "Farmer";
 
 	List<DashBoardMenuCard> cards = new List<DashBoardMenuCard>
