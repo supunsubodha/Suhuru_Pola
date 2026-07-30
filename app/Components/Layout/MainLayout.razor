@@ -1,4 +1,6 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavManager
+
 
 <div class="page">
     <div class="sidebar">
@@ -7,7 +9,9 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="#" class="logout-link">Log out</a>
+            <button @onclick="Logout" class="btn btn-danger">
+                <span class="material-symbols-outlined me-2">logout</span>Log out
+            </button>
         </div>
 
         <article class="content px-4">
@@ -21,3 +25,19 @@
     <a href="." class="reload">Reload</a>
     <span class="dismiss">🗙</span>
 </div>
+@code{
+
+    public void Logout()
+    {
+        if (NavManager.BaseUri.Contains("localhost") || NavManager.BaseUri.Contains("127.0.0.1"))
+        {
+            // 1. We are testing locally. Use the absolute path with the restricted port.
+            NavManager.NavigateTo("http://127.0.0.1:8080/index.html", forceLoad: true);
+        }
+        else
+        {
+            // 2. We are on the real production server. Use the relative path.
+            NavManager.NavigateTo("../index.html", forceLoad: true);
+        }
+    }
+}
