@@ -15,6 +15,7 @@
 	{
 		if (card.Role == role || card.Role == "All"){
 			<button class="dashboard-card" @onclick="() => NavigationManager.NavigateTo(card.URL)">
+				<h1><span class="material-symbols-outlined">@card.Icon</span></h1>
 				<h3>@card.Title</h3>
 			</button>
 		}
@@ -23,14 +24,15 @@
 @code {
 	string name { get; set;} = "Lara Croft";
 	string role { get; set;} = "Farmer";
+	string Icon { get; set;} = "post_add";
 
 	List<DashBoardMenuCard> cards = new List<DashBoardMenuCard>
 	{
-		new DashBoardMenuCard("Post a New Stock", "Farmer", "#"),
-		new DashBoardMenuCard("Manage Stocks", "Farmer", "#"),
-		new DashBoardMenuCard("Browse Market", "Buyer", "#"),
-		new DashBoardMenuCard("Orders and Bids", "All", "#"),
-		new DashBoardMenuCard("Profile", "All", "#"),
-		new DashBoardMenuCard("Messages and Alerts", "All", "#")
+		new DashBoardMenuCard("Post a New Stock", "Farmer", "#", "post_add"),
+		new DashBoardMenuCard("Manage Stocks", "Farmer", "#", "warehouse"),
+		new DashBoardMenuCard("Browse Market", "Buyer", "#", "search"),
+		new DashBoardMenuCard("Orders and Bids", "All", "#", "shopping_cart"),
+		new DashBoardMenuCard("Profile", "All", "#", "person"),
+		new DashBoardMenuCard("Messages and Alerts", "All", "#", "notifications")
 	};
 }

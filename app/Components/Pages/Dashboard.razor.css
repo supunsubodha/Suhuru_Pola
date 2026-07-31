@@ -24,7 +24,7 @@ h1, h2{
     box-sizing: border-box;
     text-align: center;
     min-height: 100px;
-    margin: 10px;
+    margin: 8px;
 }
     .dashboard-card:hover {
         background-color: rgba(154,250,50,0.1);
