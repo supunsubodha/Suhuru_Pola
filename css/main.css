@@ -7,16 +7,16 @@
 header {
     display: flex;
     justify-content: space-between;
-    background-color: rgba(0,150,0,0.7);
+    background-color: rgba(215, 250, 195, 1.0) /*rgba(0,150,0,0.5)*/;
     align-items: center;
 }
 
 
-header h1, header h3 {
-    text-align: right;
-    color: rgb(242, 187, 5);
-    margin-right: 0;
-}
+    header h1, header h3 {
+        text-align: right;
+        color: rgb(10, 69, 17);
+        margin-right: 0;
+    }
 
 header {
     text-align: center;
@@ -34,12 +34,13 @@ nav {
     justify-content: space-evenly;
 }
 
-nav a {
-    color: white;              /* Text color */
-    text-decoration: none;
-    margin-right: 30px;
-    font-size: 16px;
-}
+    nav a {
+        color: rgb(10, 69, 17); /* Text color */
+        text-decoration: none;
+        margin-right: 30px;
+        font-size: 20px;
+        font-weight:bold;
+    }
 
 
 nav a:hover {
@@ -70,20 +71,21 @@ nav a:hover {
 
     nav :hover {
         color: rgb(242, 187, 5);
+        background-color:yellow;
     }
 
     .menu {
         display: none;
         flex-direction: column;
-        background-color: rgba(0,100,0,0.7)
+        background-color: rgb(232, 245, 233);
     }
- 
-    .menu a{
-        color:white;
-        text-decoration:none;
-        padding:15px;
-        border-bottom:1px solid rgba(255,255,255,0.2);
-    }
+
+        .menu a {
+            color: rgb(10, 69, 17);
+            text-decoration: none;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
 
     .menu a:hover{
         background:#2f5d34;
@@ -94,23 +96,19 @@ nav a:hover {
         grid-column-start: 1;
         grid-column-end: 3;
     }
-    .menu-btn{
+    .menu-btn {
         display: flex;
-        font-size:28px;
-        background:#2f5d34;
-        color:white;
-        border:none;
-        border-radius:5px;
-        width:70px;
-        height: 35px;
-        cursor:pointer;
+        font-size: 28px;
+        background-color: rgba(215, 250, 195, 1.0);
+        color: rgb(10, 69, 17);
+        border: none;
+        border-radius: 5px;
+        width: 70px;
+        height: 100%;
+        cursor: pointer;
         margin-left: auto;
         justify-content: center;
-        align-items: center;   
-    }
-
-    .menu-btn:hover{
-        background: #39703f;
+        align-items: center;
     }
 
 }
