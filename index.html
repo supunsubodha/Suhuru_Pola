@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Govimithuru | Home</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="script.js"></script>
     <script src="js/script.js"></script>
     <link rel="icon" type="image/png" href="/favicon.png" />
 </head>
@@ -36,7 +37,29 @@
     <main>
         <!-- TODO: " Nuwan aiya - Create slideshow section"-->
         <section id="slideshow">
+            <div class="slideshow-container">
+                <!-- Banner Slides -->
+                 <div class="slide fade">
+                 <img src="images/farmers.jpg" alt="Banner 1">
+                 </div>
+                 <div class="slide fade">
+                 <img src="images/fruits.jpg" alt="Banner 2">
+                 </div>
+                 <div class="slide fade">
+                 <img src="images/paddy.jpg" alt="Banner 3">
+                 </div>
+                 <div class="slide fade">
+                 <img src="images/paddy.jpg" alt="Banner 4">
+                 </div>
 
+                 <!-- Indicator Dots -->
+                  <div class="dots-container">
+                    <span class="dot" onclick="setSlide(0)"></span>
+                    <span class="dot" onclick="setSlide(1)"></span>
+                    <span class="dot" onclick="setSlide(2)"></span>
+                    <span class="dot" onclick="setSlide(3)"></span>
+                  </div>
+            </div>
         </section>
         <section id="about-section">
             <!-- TODO: @Harinya akka - Create about card -->
@@ -56,14 +79,90 @@
         </section>
 
         <!-- TODO: @Nuwan aiya - Create news section -->
-        <section id="news-section">
+        <section id="news-section" class="section-padding">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge">Fresh From the Field</span>
+      <h2>Latest Farm News & Updates</h2>
+      <p>Stay informed about seasonal harvests, local market events, and stories from our community of farmers.</p>
+    </div>
 
-        </section>
+    <!-- Interactive News Category Filters -->
+    <div class="news-filters">
+      <button class="filter-btn active" data-filter="all">All News</button>
+      <button class="filter-btn" data-filter="harvest">🌱 Harvest Updates</button>
+      <button class="filter-btn" data-filter="event">📅 Market Events</button>
+      <button class="filter-btn" data-filter="story">👨‍🌾 Farmer Stories</button>
+    </div>
+
+    <!-- News Cards Grid (by JS) -->
+    <div class="news-grid" id="news-grid-container">
+      <!-- JavaScript will dynamically insert news cards here -->
+    </div>
+  </div>
+</section>
 
         <!-- TODO: @Nuwan aiya - Create contact form-->
-        <section id="contact-form">
+        <section id="contact-form" class="section-padding contact-section">
+  <div class="container">
+    <div class="contact-wrapper">
+      <!-- Left Side: Friendly Context -->
+      <div class="contact-intro">
+        <span class="badge">Get In Touch</span>
+        <h2>Have a Question for Our Co-op?</h2>
+        <p>Whether you are a customer looking for fresh seasonal deliveries, a restaurant seeking wholesale prices, or a local farmer wanting to sell your goods with us—we want to hear from you!</p>
+        
+        <div class="quick-contact-info">
+          <div class="info-item">
+            <strong>📍 Market Hub:</strong> 123 Agriculture Way, Green Valley
+          </div>
+          <div class="info-item">
+            <strong>⏰ Support Hours:</strong> Mon - Sat, 6:00 AM - 5:00 PM
+          </div>
+          <div class="info-item">
+            <strong>📧 Email:</strong> support@localfarmerscoop.com
+          </div>
+        </div>
+      </div>
 
-        </section>
+      <!-- Right Side: The Form -->
+      <div class="form-container">
+        <form id="farmer-contact-form" novalidate>
+          <div class="form-group">
+            <label for="name">Your Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="e.g., Nuwan Perera" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="nuwan@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="role">I am a... *</label>
+            <select id="role" name="role" required>
+              <option value="">Select your role...</option>
+              <option value="customer">Regular Buyer / Customer</option>
+              <option value="farmer">Farmer looking to sell goods</option>
+              <option value="wholesale">Wholesale / Restaurant Buyer</option>
+              <option value="other">General Visitor</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message *</label>
+            <textarea id="message" name="message" rows="4" placeholder="How can we help you today?" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Send Message to Farmers</button>
+          
+          <!-- Feedback message box -->
+          <div id="form-status" class="status-msg hidden"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
         
     </main>
 
