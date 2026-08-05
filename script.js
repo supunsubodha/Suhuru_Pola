@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", showSlides);
 
 // ==========================================
 // 1. DYNAMIC NEWS DATA
-// Your group can easily add more articles to this list!
 // ==========================================
 const newsArticles = [
   {
