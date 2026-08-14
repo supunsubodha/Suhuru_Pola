@@ -2,6 +2,7 @@
     <div class="container-fluid">
         <img src="/favicon.png" alt="Govimithuru Logo" class="logo"/>
         <a class="navbar-brand" href="">Govimithuru</a>
+        <hr>
     </div>
 </div>
 
@@ -9,12 +10,25 @@
 
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="nav flex-column">
+        <button class="post-stock">+ Post New Stock</button>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="material-symbols-outlined me-2">home</span> Dashboard
+                <span class="material-symbols-outlined me-3">dashboard_2</span> Dashboard
             </NavLink>
             <NavLink class="nav-link" href="/profile" Match="NavLinkMatch.All">
-                <span class="material-symbols-outlined me-2">person_text</span> Profile
+                <span class="material-symbols-outlined me-3">storefront</span>Marketplace
+            </NavLink>
+            <NavLink class="nav-link" href="/profile" Match="NavLinkMatch.All">
+                <span class="material-symbols-outlined me-3">inventory_2</span>My Stocks
+            </NavLink>
+            <NavLink class="nav-link" href="/profile" Match="NavLinkMatch.All">
+                <span class="material-symbols-outlined me-3">gavel</span>Bids & Offers
+            </NavLink>
+            <NavLink class="nav-link" href="/profile" Match="NavLinkMatch.All">
+                <span class="material-symbols-outlined me-3">chat</span>Bids & Offers
+            </NavLink>
+            <NavLink class="nav-link" href="/profile" Match="NavLinkMatch.All">
+                <span class="material-symbols-outlined me-3">person</span>Profile
             </NavLink>
         </div>
     </nav>

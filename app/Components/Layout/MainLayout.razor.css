@@ -5,15 +5,15 @@
 }
 main {
     flex: 1;
-    background-color: #F4F7F6;
+    background-color: F8F9FA;
 }
 
 .sidebar {
-    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,50,0,0.9) 25%, rgba(0,150,0,0.9) 85%);
+    background: F8F9FA;
 }
 
 .top-row {
-    background: linear-gradient(30deg, rgba(0,50,0,0.9) 15%, rgba(0,100,0,0.9) 85%);
+    background: F8F9FA;
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-end;
     height: 3.5rem;
@@ -21,26 +21,10 @@ main {
     align-items: center;
 }
 
-    .top-row ::deep a, .top-row ::deep .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-        text-decoration: none;
-    }
-
-    .top-row ::deep .logout-link {
-        color: azure;
-        font-weight: 600;
-    }
-
-    .top-row ::deep .logout-link:hover {
-        color: #1f5f2d;
-        text-decoration: underline;
-    }
-
-    .top-row ::deep a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.top-row ::deep a:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 @media (max-width: 640.98px) {
     .top-row {
