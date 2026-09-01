@@ -9,6 +9,9 @@ header {
     justify-content: space-between;
     background-color: rgba(215, 250, 195, 1.0) /*rgba(0,150,0,0.5)*/;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 
