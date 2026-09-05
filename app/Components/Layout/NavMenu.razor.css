@@ -20,6 +20,7 @@
 .nav {
     border: 1px solid #D6D5D5;
     height: 100%;
+    bottom:0;
 }
 
 .navbar-toggler:checked {
@@ -97,6 +98,8 @@
 
 .nav-scrollable {
     display: none;
+    flex: 1 1 auto;
+    overflow-y: auto;
 }
 
 .navbar-toggler:checked ~ .nav-scrollable {
@@ -129,6 +132,11 @@
     margin: 20px auto 10px auto;
     padding:12px 15px 35px 15px;
 }
+.logout-button {
+    margin-top: auto;
+    margin-bottom: 2px;
+    width: 100%;
+}
 
 @media (min-width: 641px) {
     .navbar-toggler {
@@ -138,6 +146,7 @@
     .nav-scrollable {
         /* Never collapse the sidebar for wide screens */
         display: block;
+        flex: 1 1 auto;
 
         /* Allow sidebar to scroll for tall menus */
         height: calc(100vh - 3.5rem);

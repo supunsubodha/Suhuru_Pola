@@ -5,15 +5,17 @@
 }
 main {
     flex: 1;
-    background-color: F8F9FA;
+    background-color: #F8F9FA;
 }
 
 .sidebar {
-    background: F8F9FA;
+    background: #F8F9FA;
+    display: flex;
+    flex-direction: column;
 }
 
 .top-row {
-    background: F8F9FA;
+    background: #F8F9FA;
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-end;
     height: 3.5rem;
