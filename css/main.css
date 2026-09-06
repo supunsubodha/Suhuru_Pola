@@ -472,6 +472,8 @@ nav a:hover {
     justify-content:space-between;
     flex-wrap:wrap;
     gap:40px;
+    padding: 10px 0px 10px 25px;
+    background-color:rgba(0,150,0,0.1);
 }
 
 .footer-about{
