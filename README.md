@@ -2,6 +2,7 @@
 Online trading flatform for farmers and buyers.
 
 **Functional Requirements**
+
 *Farmers should have ability to post their stocks.
 
 *Farmers and buyers should have ability to create accounts their selves.
@@ -23,4 +24,5 @@ Online trading flatform for farmers and buyers.
 
 
 **Non Functional Requirement**
+
 *Initial website loading shouldn't take much time.
