@@ -55,6 +55,10 @@ build_metadata.AdditionalFiles.CssScope = b-zf415b4rb4
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcUmVjb25uZWN0TW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-7rtsgnzsip
 
+[C:/Users/User/Desktop/Lochana_Project/Govimithuru/app/Components/Pages/BidsAndOffers.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCaWRzQW5kT2ZmZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-tuxjqozfvm
+
 [C:/Users/User/Desktop/Lochana_Project/Govimithuru/app/Components/Pages/Dashboard.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEYXNoYm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-ffkxvixgtr
@@ -62,6 +66,18 @@ build_metadata.AdditionalFiles.CssScope = b-ffkxvixgtr
 [C:/Users/User/Desktop/Lochana_Project/Govimithuru/app/Components/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-kd7cqut6v4
+
+[C:/Users/User/Desktop/Lochana_Project/Govimithuru/app/Components/Pages/Marketplace.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNYXJrZXRwbGFjZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-g5lccmpljk
+
+[C:/Users/User/Desktop/Lochana_Project/Govimithuru/app/Components/Pages/Messages.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNZXNzYWdlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ozoz04ztgm
+
+[C:/Users/User/Desktop/Lochana_Project/Govimithuru/app/Components/Pages/MysStocks.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNeXNTdG9ja3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-kqc51eau8y
 
 [C:/Users/User/Desktop/Lochana_Project/Govimithuru/app/Components/Pages/Profile.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQcm9maWxlLnJhem9y
