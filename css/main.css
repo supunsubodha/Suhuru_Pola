@@ -465,7 +465,6 @@ nav a:hover {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-=======
 
     .menu {
         display: none;
@@ -485,10 +484,11 @@ nav a:hover {
     }
 
     .menu.show{
-        display:grid;
+        display:;
         grid-column-start: 1;
         grid-column-end: 3;
     }
+
     .menu-btn {
         display: flex;
         font-size: 28px;
@@ -496,7 +496,6 @@ nav a:hover {
         color: rgb(10, 69, 17);
         border: none;
         border-radius: 5px;
-        width: 70px;
         height: 100%;
         cursor: pointer;
         margin-left: auto;
