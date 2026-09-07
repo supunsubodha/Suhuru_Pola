@@ -3,7 +3,68 @@
 
 <PageTitle>Govimithuru | Log in</PageTitle>
 <h1>Log in</h1>
-<!-- TODO: Rasanjali akka Create login form here -->
+    <!--Login Container--> 
+    <div class="container"> 
+ 
+        <div class="login-box"> 
+ 
+            <!--LOGO--> 
+ 
+            <img src="" alt=""> 
+ 
+            <h1>Govi Mithuru</h1> 
+ 
+            <p class="tagline">අස්වැන්නෙන් සිනහවක්</p> 
+ 
+            <div class="line"> 
+                <hr> 
+                <i class="fa-solid fa-leaf"></i> 
+                <hr> 
+            </div> 
+ 
+            <h2>Login to Your Account</h2> 
+ 
+            <!--Login Form--> 
+            <form id="loginForm"> 
+ 
+                <!--NIC--> 
+                <label for="nic">NIC Number/Username</label> 
+ 
+                <div class="input-box"> 
+                    <i class="fa-regular fa-id-card"></i> 
+                    <input type="text" name="nic" placeholder="Enter NIC (e.g. 200112345678)" required> 
+                </div> 
+ 
+                <!--Password--> 
+                <label for="password">Password</label> 
+ 
+                <div class="input-box"> 
+                    <i class="fa-regular fa-user"></i> 
+                    <input type="password" name="password" placeholder="Enter your password(e.g. mypassword123)" required> 
+                </div> 
+ 
+                <!--Message--> 
+                <p id="message"></p> 
+ 
+                <!--Button--> 
+                <button type="submit" onclick="#"> 
+                    <i class="fa-solid fa-lock"></i>  
+ 
+                    Login 
+ 
+                </button> 
+ 
+            </form> 
+ 
+            <p class="register"> 
+                Don't have an account? 
+ 
+                <a href="#">register here</a> 
+            </P>
+         
+        </div> 
+    </div> 
+
 
 @code {
 

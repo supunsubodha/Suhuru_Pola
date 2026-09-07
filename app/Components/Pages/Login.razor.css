@@ -1,0 +1,355 @@
+/* ==============================
+   GENERAL
+================================ */
+
+
+
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #e8f5e9;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+/* ==============================
+   CONTAINER
+================================ */
+
+.container {
+    width: 100%;
+
+    max-width: 450px;
+
+    padding: 20px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* ==============================
+   LOGIN BOX
+================================ */
+
+.login-box {
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ==============================
+   LOGO
+================================ */
+
+.logo {
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+    margin-bottom: 10px;
+}
+
+
+/* ==============================
+   TITLE
+================================ */
+
+.login-box h1 {
+    color: #2e7d32;
+
+    font-size: 32px;
+
+    margin-bottom: 5px;
+}
+
+
+/* ==============================
+   TAGLINE
+================================ */
+
+.tagline {
+    color: #4caf50;
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==============================
+   LINE
+================================ */
+
+.line {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: 15px 0 25px;
+}
+
+
+.line hr {
+    width: 80px;
+
+    border: none;
+
+    border-top: 1px solid #81c784;
+}
+
+
+.line i {
+    color: #4caf50;
+
+    font-size: 18px;
+}
+
+
+/* ==============================
+   LOGIN HEADING
+================================ */
+
+.login-box h2 {
+    color: #333;
+
+    font-size: 22px;
+
+    margin-bottom: 25px;
+}
+
+
+/* ==============================
+   FORM
+================================ */
+
+form {
+    text-align: left;
+}
+
+
+/* ==============================
+   LABEL
+================================ */
+
+label {
+    display: block;
+
+    color: #333;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+}
+
+
+/* ==============================
+   INPUT BOX
+================================ */
+
+.input-box {
+    display: flex;
+
+    align-items: center;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    padding: 0 12px;
+
+    margin-bottom: 20px;
+
+    transition: 0.3s;
+}
+
+
+.input-box:focus-within {
+    border-color: #4caf50;
+
+    box-shadow:
+        0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+
+/* ==============================
+   INPUT ICON
+================================ */
+
+.input-box i {
+    color: #4caf50;
+
+    margin-right: 10px;
+
+    font-size: 17px;
+}
+
+
+/* ==============================
+   INPUT
+================================ */
+
+.input-box input {
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    padding: 13px 5px;
+
+    font-size: 15px;
+
+    color: #333;
+}
+
+
+.input-box input::placeholder {
+    color: #999;
+}
+
+
+/* ==============================
+   MESSAGE
+================================ */
+
+#message {
+    text-align: center;
+
+    margin-bottom: 15px;
+
+    font-size: 14px;
+}
+
+
+/* ==============================
+   LOGIN BUTTON
+================================ */
+
+button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2e7d32;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+button:hover {
+    background: #1b5e20;
+
+    transform: translateY(-1px);
+}
+
+
+button i {
+    margin-right: 8px;
+}
+
+
+/* ==============================
+   REGISTER
+================================ */
+
+.register {
+    margin-top: 20px;
+
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+.register a {
+    color: #2e7d32;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+.register a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==============================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 500px) {
+
+    .container {
+        padding: 15px;
+    }
+
+
+    .login-box {
+        padding: 30px 25px;
+    }
+
+
+    .logo {
+        width: 75px;
+
+        height: 75px;
+    }
+
+
+    .login-box h1 {
+        font-size: 27px;
+    }
+
+
+    .tagline {
+        font-size: 16px;
+    }
+
+
+    .login-box h2 {
+        font-size: 19px;
+    }
+
+
+    .line hr {
+        width: 60px;
+    }
+}
