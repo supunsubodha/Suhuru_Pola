@@ -1,8 +1,10 @@
-﻿@page "/login"
+﻿@page "/"
+@layout Layout.EmptyLayout
 @attribute [StreamRendering]
+@inject NavigationManager NavigationManager
 
 <PageTitle>Govimithuru | Log in</PageTitle>
-<h1>Log in</h1>
+
     <!--Login Container--> 
     <div class="container"> 
  
@@ -25,7 +27,7 @@
             <h2>Login to Your Account</h2> 
  
             <!--Login Form--> 
-            <form id="loginForm"> 
+            <form id="loginForm" @onsubmit="HandleLogin" @onsubmit:preventDefault="true"> 
  
                 <!--NIC--> 
                 <label for="nic">NIC Number/Username</label> 
@@ -47,11 +49,9 @@
                 <p id="message"></p> 
  
                 <!--Button--> 
-                <button type="submit" onclick="#"> 
+                <button type="submit"> 
                     <i class="fa-solid fa-lock"></i>  
- 
                     Login 
- 
                 </button> 
  
             </form> 
@@ -67,5 +67,8 @@
 
 
 @code {
-
+    private void HandleLogin()
+    {
+        NavigationManager.NavigateTo("/dashboard");
+    }
 }
