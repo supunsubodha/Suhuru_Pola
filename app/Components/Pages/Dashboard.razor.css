@@ -2,15 +2,15 @@
     margin: 0;
     padding: 0;
 }
-#user-name {
-    color: #8a9137;
-}
-h1, h2{
-    color:black;
+    #welcome-section h1 {
+        color: #40916C;
+    }
+#welcome-section h2{
+    color:lightslategray;
 }
 .dashboard-card-section {
     display: grid;
-    margin: 0;
+    margin: 20px auto 20px auto;
     padding: 0;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
@@ -18,7 +18,7 @@ h1, h2{
 }
 .dashboard-card {
     background-color: rgb(255, 255, 255);
-    border-color: darkgreen;
+    border-color: lightgray;
     border-radius: 10px;
     color: #333333;
     box-sizing: border-box;
@@ -26,8 +26,35 @@ h1, h2{
     min-height: 100px;
     margin: 8px;
 }
-    .dashboard-card:hover {
-        background-color: rgba(154,250,50,0.1);
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        color: #8a9137;
-    }
+
+.dashboard-card > h1 {
+    display: flex;
+    justify-content: flex-start;
+    color:gray;
+}
+.dashboard-card > h3{
+    color:gray;
+}
+
+.dashboard-card .material-symbols-outlined {
+    line-height: 1;
+}
+
+.dashboard-card:hover {
+    background-color: rgba(154,250,50,0.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+/*Table styles*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin:20px auto 20px auto;
+    border-bottom: 1px solid #ddd;
+    font-size:larger;
+}
+tr{
+    border-bottom:1px solid #ddd;
+}
+#title-head {
+    color:#40916C;
+}

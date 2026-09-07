@@ -1,4 +1,4 @@
-﻿@page "/dashboard"
+﻿@page "/"
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
 
@@ -6,14 +6,14 @@
 <PageTitle>Govimithuru | Dashboard</PageTitle>
 
 <section id= "welcome-section">
-<h2>Hi, <span id="user-name">@name</span> 👋🏽</h2>
-<h1>Welcome to the vegitable trading portal</h1>
+<h1>Welcome back, <span id="user-name">@currentUser.UserName</span> </h1>
+<h2>Welcome to the vegitable trading portal</h2>
 </section>
 <hr>
 <section class = "dashboard-card-section">
 	@foreach (var card in cards)
 	{
-		if (card.Role == role || card.Role == "All"){
+		if (card.Role == currentUser.Role || card.Role == "All"){
 			<button class="dashboard-card" @onclick="() => NavigationManager.NavigateTo(card.URL)">
 				<h1><span class="material-symbols-outlined">@card.Icon</span></h1>
 				<h3>@card.Title</h3>
@@ -21,18 +21,29 @@
 		}
 	}
 </section>
+<table>
+	<tr>
+		<th id="title-head">Recent Bids</th>
+	</tr>
+	<tr>
+		<th>Product</th>
+		<th>Bided by</th>
+		<th>Amount</th>
+		<th>Actions</th>
+	</tr>	
+</table>
 @code {
-	string name { get; set;} = "Lara Croft";
-	string role { get; set;} = "Farmer";
-	string Icon { get; set;} = "post_add";
+	User currentUser = new User(001, "Lara Croft", "Buyer");
 
+	//Dummay data will be placed here until backend developed
 	List<DashBoardMenuCard> cards = new List<DashBoardMenuCard>
 	{
-		new DashBoardMenuCard("Post a New Stock", "Farmer", "#", "post_add"),
-		new DashBoardMenuCard("Manage Stocks", "Farmer", "#", "warehouse"),
-		new DashBoardMenuCard("Browse Market", "Buyer", "#", "search"),
-		new DashBoardMenuCard("Orders and Bids", "All", "#", "shopping_cart"),
-		new DashBoardMenuCard("Profile", "All", "#", "person"),
-		new DashBoardMenuCard("Messages and Alerts", "All", "#", "notifications")
+		new DashBoardMenuCard("Active Listings", "Farmer", "#", "post_add"),
+		new DashBoardMenuCard("Pending Bids", "Farmer", "#", "warehouse"),
+		new DashBoardMenuCard("Profile Feedback", "All", "#", "feedback"),
+		new DashBoardMenuCard("My Bids", "Buyer", "#", "gavel"),
+		new DashBoardMenuCard("Saved Listings", "Buyer", "#", "bookmark"),
+		new DashBoardMenuCard("Successful Purchases", "Buyer", "#", "credit_score"),
+		new DashBoardMenuCard("Market Trends", "All", "#", "show_chart")
 	};
 }
