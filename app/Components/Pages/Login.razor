@@ -3,12 +3,6 @@
 
 <PageTitle>Govimithuru | Log in</PageTitle>
 <h1>Log in</h1>
-<!-- TODO: Rasanjali akka Create login form here -->
-
-     <!--Background Leaves--> 
-    <img src="" alt="">
-    <img src="" alt=""> 
- 
     <!--Login Container--> 
     <div class="container"> 
  
@@ -34,37 +28,26 @@
             <form id="loginForm"> 
  
                 <!--NIC--> 
-                <label>NIC Number</label> 
+                <label for="nic">NIC Number/Username</label> 
  
                 <div class="input-box"> 
                     <i class="fa-regular fa-id-card"></i> 
- 
-                    <input 
-                        type="text" 
-                        id="nic" 
-                        placeholder="Enter NIC (e.g. 200112345678)" 
-                        required> 
+                    <input type="text" name="nic" placeholder="Enter NIC (e.g. 200112345678)" required> 
                 </div> 
  
-                <!--Username--> 
-                <label>Username</label> 
+                <!--Password--> 
+                <label for="password">Password</label> 
  
                 <div class="input-box"> 
- 
                     <i class="fa-regular fa-user"></i> 
- 
-                    <input 
-                        type="text" 
-                        id="username" 
-                        placeholder="Enter your username" 
-                        required> 
+                    <input type="password" name="password" placeholder="Enter your password(e.g. mypassword123)" required> 
                 </div> 
  
                 <!--Message--> 
                 <p id="message"></p> 
  
                 <!--Button--> 
-                <button type="submit"> 
+                <button type="submit" onclick="#"> 
                     <i class="fa-solid fa-lock"></i>  
  
                     Login 
