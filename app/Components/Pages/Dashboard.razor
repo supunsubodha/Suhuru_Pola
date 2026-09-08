@@ -1,4 +1,4 @@
-﻿@page "/"
+@page "/"
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
 
@@ -7,7 +7,7 @@
 
 <section id= "welcome-section">
 <h1>Welcome back, <span id="user-name">@currentUser.UserName</span> </h1>
-<h2>Welcome to the vegitable trading portal</h2>
+<h2>Your Agricultural Trading Hub</h2>
 </section>
 <hr>
 <section class = "dashboard-card-section">
@@ -21,29 +21,66 @@
 		}
 	}
 </section>
+@if(currentUser.Role == "Farmer")
+{
 <table>
 	<tr>
-		<th id="title-head">Recent Bids</th>
+		<th id="title-head" colspan="4">Recent Bids</th>
 	</tr>
 	<tr>
 		<th>Product</th>
-		<th>Bided by</th>
+		<th>Bidded by</th>
 		<th>Amount</th>
 		<th>Actions</th>
-	</tr>	
-</table>
-@code {
-	User currentUser = new User(001, "Lara Croft", "Buyer");
-
-	//Dummay data will be placed here until backend developed
-	List<DashBoardMenuCard> cards = new List<DashBoardMenuCard>
+	</tr>
+	@foreach (var bid in bids)
 	{
-		new DashBoardMenuCard("Active Listings", "Farmer", "#", "post_add"),
-		new DashBoardMenuCard("Pending Bids", "Farmer", "#", "warehouse"),
-		new DashBoardMenuCard("Profile Feedback", "All", "#", "feedback"),
-		new DashBoardMenuCard("My Bids", "Buyer", "#", "gavel"),
-		new DashBoardMenuCard("Saved Listings", "Buyer", "#", "bookmark"),
-		new DashBoardMenuCard("Successful Purchases", "Buyer", "#", "credit_score"),
-		new DashBoardMenuCard("Market Trends", "All", "#", "show_chart")
-	};
+		<tr>
+		<td>@bid.Product.Name</td>
+		<td>@bid.User.UserName</td>
+		<td>LKR @bid.Amount</td>
+		<td><button class="btn btn-success" >Accept</button></td>
+		</tr>
+	}
+</table>
+}
+@code {
+	User currentUser;
+    List<DashBoardMenuCard> cards;
+    List<Product> products;
+    List<Bid> bids;
+	protected override void OnInitialized()
+	{
+		currentUser = new User(001, "Lara Croft", "Farmer");
+
+		//Dummay data will be placed here until backend developed
+		cards = new List<DashBoardMenuCard>
+		{
+			new DashBoardMenuCard("Active Listings", "Farmer", "#", "post_add"),
+			new DashBoardMenuCard("Pending Bids", "Farmer", "#", "warehouse"),
+			new DashBoardMenuCard("Profile Feedback", "All", "#", "feedback"),
+			new DashBoardMenuCard("My Bids", "Buyer", "#", "gavel"),
+			new DashBoardMenuCard("Saved Listings", "Buyer", "#", "bookmark"),
+			new DashBoardMenuCard("Successful Purchases", "Buyer", "#", "credit_score"),
+			new DashBoardMenuCard("Market Trends", "All", "#", "show_chart")
+		};
+		//Dummy data will be placed here until backend developed
+		products = new List<Product>
+		{
+			new Product(001, "Carrot", 10),
+			new Product(002, "Potato", 14),
+			new Product(003, "Cabbage", 7),
+			new Product(004, "Tomato", 3),
+			new Product(005, "Onion", 14)
+		};
+		//Dummy data will be placed here until backend developed
+		bids = new List<Bid>
+		{
+			new Bid(1, products[0], currentUser, 150.50m, DateTime.Now.AddHours(-2)),
+			new Bid(2, products[1], currentUser, 85.00m, DateTime.Now.AddMinutes(-45)), 
+			new Bid(3, products[3], currentUser, 45.25m, DateTime.Now.AddDays(-1)), 
+			new Bid(4, products[4], currentUser, 210.00m, DateTime.Now.AddMinutes(-5)), 
+			new Bid(5, products[0], currentUser, 160.00m, DateTime.Now) 
+		};
+	}
 }
