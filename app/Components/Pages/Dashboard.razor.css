@@ -41,8 +41,14 @@
 }
 
 .dashboard-card:hover {
-    background-color: rgba(154,250,50,0.1);
+    background-color: #40916C;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-card:hover > h1,
+.dashboard-card:hover > h3,
+.dashboard-card:hover .material-symbols-outlined {
+    color: #F0F1F2;
 }
 /*Table styles*/
 table {
@@ -55,6 +61,11 @@ table {
 tr{
     border-bottom:1px solid #ddd;
 }
+th, td {
+    color: #454748;
+    padding:10px;
+}
 #title-head {
     color:#40916C;
+    font-size:xx-large;
 }
