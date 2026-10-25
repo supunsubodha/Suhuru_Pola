@@ -4,10 +4,25 @@ using Backend.Data;
 using Backend.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Made blazor app immune to the backend API CORS policy
+var blazorFrontendUrl = builder.Configuration["FrontendUrl"] ?? "https://localhost:5208";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowBlazorApp", policy =>
+    {
+        policy.WithOrigins(blazorFrontendUrl)
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); 
+    });
+});
+
 var ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString)));
+
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
@@ -39,7 +54,7 @@ builder.Services.ConfigureApplicationCookie(options =>
         context.Response.StatusCode = StatusCodes.Status401Unauthorized;
         return Task.CompletedTask;
     };
-    options.Events.OnRedirectToLogin = context =>
+    options.Events.OnRedirectToAccessDenied = context =>
     {
         context.Response.StatusCode = StatusCodes.Status403Forbidden;
         return Task.CompletedTask;
@@ -47,18 +62,22 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 });
 
-builder.Services.AddOpenApi();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
 
 app.Run();
 
