@@ -20,3 +20,18 @@ public class AuthControllers : ControllerBase
         _roleManager = roleManager;
     }
 }
+//Data transfer objects for user registration and login
+public class RegisterDto
+{
+    private string Email { get; set; }
+    private string UserName { get; set; }
+    private string NIC { get; set; }
+    private int PhoneNumber { get; set; }
+    private string Password { get; set; }
+}
+
+public class LoginDto
+{
+    private string Identifier { get; set; }
+    private string Password { get; set; }
+}
