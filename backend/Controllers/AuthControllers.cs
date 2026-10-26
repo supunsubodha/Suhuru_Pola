@@ -20,7 +20,8 @@ public class AuthControllers : ControllerBase
         _signInManager = signInManager;
         _roleManager = roleManager;
     }
-
+    
+    //Register a new user with a specific role (Farmer or Buyer)
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDto model)
     {
@@ -62,6 +63,65 @@ public class AuthControllers : ControllerBase
         }
         await _userManager.AddToRoleAsync(User, model.Role);
         return Ok(new{Message=$"User {model.UserName} registered successfully as {model.Role}"});
+    }
+    
+    //Login a user with email, username or NIC and password
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginDto model)
+    {
+        var user = await _userManager.FindByEmailAsync(model.Identifier) ??
+                   await _userManager.FindByNameAsync(model.Identifier) ??
+                   await _userManager.Users.FirstOrDefaultAsync(u => u.NIC == model.Identifier);
+
+        if(user == null)
+        {
+            return Unauthorized(new{Message="Invalid credentials"});
+        }
+
+        var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password,true);
+
+        if (result.IsLockedOut)
+        {
+            return StatusCode(StatusCodes.Status423Locked, new { Message = "Account locked due to multiple failed attempts. Try again later." });
+        }
+        if(!result.Succeeded)
+        {
+            return Unauthorized(new { Message = "Invalid credentials." });
+        }
+
+        return Ok(new{Message=$"User {user.UserName} logged in successfully"});
+    }
+    
+    [HttpPost("logout")]
+    [Authorize]
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return Ok(new{Message="User logged out successfully"});
+    }
+    
+    [HttpGet("me")]
+    [Authorize]
+    public async Task<IActionResult> GetCurrentUser()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            return Unauthorized();
+        }
+
+        var roles = await _userManager.GetRolesAsync(user);
+
+        return Ok(new
+        {
+            user.Id,
+            user.Email,
+            user.UserName,
+            user.PhoneNumber,
+            user.NIC,
+            user.IsVerified,
+            Roles = roles
+        });
     }
 }
 //Data transfer objects for user registration and login
