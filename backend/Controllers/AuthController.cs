@@ -8,13 +8,13 @@ namespace Backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AuthControllers : ControllerBase
+public class AuthController : ControllerBase
 {
     private readonly UserManager<User> _userManager;
     private readonly SignInManager<User> _signInManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     
-    public AuthControllers(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
+    public AuthController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -78,7 +78,7 @@ public class AuthControllers : ControllerBase
             return Unauthorized(new{Message="Invalid credentials"});
         }
 
-        var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password,true);
+        var result = await _signInManager.PasswordSignInAsync(user, model.Password, isPersistent: false, lockoutOnFailure: true);
 
         if (result.IsLockedOut)
         {

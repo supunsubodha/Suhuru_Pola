@@ -48,6 +48,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.Name = "SuhuruPola_Cookie";
     options.ExpireTimeSpan = TimeSpan.FromHours(8);
     options.SlidingExpiration = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
     //Since this is a backend API, we don't need to redirect to login page, so we will return 401/403 status code instead.
     options.Events.OnRedirectToLogin = context =>
     {
@@ -72,7 +73,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseRouting();
 app.UseCors("AllowBlazorApp");
 app.UseAuthentication();
