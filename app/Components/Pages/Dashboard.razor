@@ -1,5 +1,4 @@
 @page "/"
-@rendermode InteractiveServer
 @inject NavigationManager NavigationManager
 
 
@@ -13,7 +12,7 @@
 <section class = "dashboard-card-section">
 	@foreach (var card in cards)
 	{
-		if (card.Role == currentUser.Role || card.Role == "All"){
+		if (card.Role == "All" || currentUser.Roles.Contains(card.Role)){
 			<button class="dashboard-card" @onclick="() => NavigationManager.NavigateTo(card.URL)">
 				<h1><span class="material-symbols-outlined">@card.Icon</span></h1>
 				<h3>@card.Title</h3>
@@ -21,7 +20,7 @@
 		}
 	}
 </section>
-@if(currentUser.Role == "Farmer")
+@if(currentUser.Roles.Contains("Farmer"))
 {
 <table>
 	<tr>
@@ -45,13 +44,22 @@
 </table>
 }
 @code {
-	User currentUser;
-    List<DashBoardMenuCard> cards;
-    List<Product> products;
-    List<Bid> bids;
+	User currentUser = new();
+	List<DashBoardMenuCard> cards = new();
+	List<Product> products = new();
+	List<Bid> bids = new();
 	protected override void OnInitialized()
 	{
-		currentUser = new User(001, "Lara Croft", "Farmer");
+		currentUser = new User
+		{
+			Id = 1,
+			UserName = "Lara Croft",
+			Email = "lara@example.com",
+			PhoneNumber = string.Empty,
+			NIC = string.Empty,
+			IsVerified = true,
+			Roles = new List<string> { "Farmer" }
+		};
 
 		//Dummay data will be placed here until backend developed
 		cards = new List<DashBoardMenuCard>
