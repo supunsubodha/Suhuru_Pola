@@ -1,13 +1,10 @@
 public class User
-{
-    public int UserId { get; set; }
+{   
+    public int Id { get; set; }
+    public string Email { get; set; }
     public string UserName { get; set; }
-    public string Role { get; set; }
-
-    public User(int userId, string userName, string role)
-    {
-        UserId = userId;
-        UserName = userName;
-        Role = role;
-    }
+    public string PhoneNumber { get; set; }
+    public string NIC { get; set; }
+    public bool IsVerified { get; set; }
+    public List<string> Roles { get; set; } = new List<string>();
 }
