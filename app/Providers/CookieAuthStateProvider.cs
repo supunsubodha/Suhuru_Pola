@@ -2,67 +2,69 @@ using System.Net.Http.Json;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Components.Authorization;
 
-namespace app.Providers;
-
-public class CookieAuthStateProvider : AuthenticationStateProvider
+namespace app.Providers
 {
-    private readonly HttpClient _httpClient;
-    private AuthenticationState? _cachedState;
-
-    public CookieAuthStateProvider(HttpClient httpClient)
+    public class CookieAuthStateProvider : AuthenticationStateProvider
     {
-        _httpClient = httpClient;
-    }
+        private readonly HttpClient _httpClient;
+        private AuthenticationState? _cachedState;
 
-    public override async Task<AuthenticationState> GetAuthenticationStateAsync()
-    {
-        if (_cachedState != null) return _cachedState;
-
-        try
+        public CookieAuthStateProvider(HttpClient httpClient)
         {
-            var response = await _httpClient.GetAsync("/api/auth/me");
+            _httpClient = httpClient;
+        }
 
-            if (response.IsSuccessStatusCode)
+        public override async Task<AuthenticationState> GetAuthenticationStateAsync()
+        {
+            if (_cachedState != null) return _cachedState;
+
+            try
             {
-                var user = await response.Content.ReadFromJsonAsync<User>();
+                var response = await _httpClient.GetAsync("/api/auth/me");
 
-                if (user is not null)
+                if (response.IsSuccessStatusCode)
                 {
-                    var claims = new List<Claim>
+                    var user = await response.Content.ReadFromJsonAsync<User>();
+
+                    if (user is not null)
+                    {
+                        var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                         new Claim(ClaimTypes.Email, user.Email)
                     };
 
-                    foreach (var role in user.Roles)
-                    {
-                        claims.Add(new Claim(ClaimTypes.Role, role));
-                    }
+                        foreach (var role in user.Roles)
+                        {
+                            claims.Add(new Claim(ClaimTypes.Role, role));
+                        }
 
-                    var identity = new ClaimsIdentity(claims, "CookieAuth");
-                    _cachedState = new AuthenticationState(new ClaimsPrincipal(identity));
+                        var identity = new ClaimsIdentity(claims, "CookieAuth");
+                        _cachedState = new AuthenticationState(new ClaimsPrincipal(identity));
+                    }
+                    else
+                    {
+                        _cachedState = new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
+                    }
                 }
                 else
                 {
                     _cachedState = new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
                 }
             }
-            else
+            catch
             {
                 _cachedState = new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
             }
+
+            return _cachedState;
         }
-        catch
+
+        public void NotifyAuthStateChanged()
         {
-            _cachedState = new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
+            _cachedState = null;
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
         }
-
-        return _cachedState;
     }
 
-    public void NotifyAuthStateChanged()
-    {
-        _cachedState = null;
-        NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-    }
 }
