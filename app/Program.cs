@@ -25,6 +25,4 @@ builder.Services.AddScoped(sp =>
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthStateProvider>();
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
 await builder.Build().RunAsync();
