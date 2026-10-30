@@ -22,6 +22,7 @@ public class AuthController : ControllerBase
     }
     
     //Register a new user with a specific role (Farmer or Buyer)
+    [AllowAnonymous]
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDto model)
     {
@@ -66,6 +67,7 @@ public class AuthController : ControllerBase
     }
     
     //Login a user with email, username or NIC and password
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDto model)
     {
@@ -100,14 +102,14 @@ public class AuthController : ControllerBase
         return Ok(new{Message="User logged out successfully"});
     }
     
+    [AllowAnonymous]
     [HttpGet("me")]
-    [Authorize]
     public async Task<IActionResult> GetCurrentUser()
     {
         var user = await _userManager.GetUserAsync(User);
         if (user == null)
         {
-            return Unauthorized();
+            return Ok(null);
         }
 
         var roles = await _userManager.GetRolesAsync(user);

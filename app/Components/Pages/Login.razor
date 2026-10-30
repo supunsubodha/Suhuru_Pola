@@ -31,34 +31,36 @@
             <h2>Login to Your Account</h2> 
  
             <!--Login Form--> 
-            <form id="loginForm" @onsubmit="HandleLogin" @onsubmit:preventDefault="true"> 
- 
+            <EditForm id="loginForm" Model="loginModel" OnValidSubmit="HandleLogin"> 
+
                 <!--NIC--> 
                 <label for="nic">NIC Number/Username/Email</label> 
- 
+
                 <div class="input-box"> 
                     <i class="fa-regular fa-id-card"></i>
-                    <input type="text" name="nic" placeholder="Enter NIC (e.g. 200112345678)" required> 
+                    <input type="text" name="nic" placeholder="Enter NIC (e.g. 200112345678)" @bind="loginModel.Identifier" required> 
                 </div> 
- 
+
                 <!--Password--> 
                 <label for="password">Password</label> 
- 
+
                 <div class="input-box"> 
                     <i class="fa-regular fa-user"></i> 
-                    <input type="password" name="password" placeholder="Enter your password(e.g. mypassword123)" required> 
+                    <input type="password" name="password" placeholder="Enter your password(e.g. mypassword123)" @bind="loginModel.Password" required> 
                 </div> 
- 
+
                 <!--Message--> 
-                <p id="message"></p> 
- 
+                @if (!string.IsNullOrWhiteSpace(errorMessage))
+                {
+                    <p id="message">@errorMessage</p>
+                }
+
                 <!--Button--> 
-                <button type="submit"> 
+                <button type="submit" > 
                     <i class="fa-solid fa-lock"></i>  
                     Login 
                 </button> 
- 
-            </form> 
+            </EditForm>
  
             <p class="register"> 
                 Don't have an account? 
@@ -77,17 +79,24 @@
     {
         errorMessage = null;
 
-        var response = await Http.PostAsJsonAsync("/api/auth/login", loginModel);
-        if(response.IsSuccessStatusCode)
+        try
         {
-            var customProvider = (CookieAuthStateProvider) AuthStateProvider;
-            customProvider.NotifyAuthStateChanged();
+            var response = await Http.PostAsJsonAsync("/api/auth/login", loginModel);
+            if (response.IsSuccessStatusCode)
+            {
+                var customProvider = (CookieAuthStateProvider)AuthStateProvider;
+                customProvider.NotifyAuthStateChanged();
 
-            NavigationManager.NavigateTo("/");
+                NavigationManager.NavigateTo("/");
+            }
+            else
+            {
+                errorMessage = "Invalid login attempt";
+            }
         }
-        else
+        catch
         {
-            errorMessage = "Invalid login attempt";
+            errorMessage = "Unable to reach server. Please try again.";
         }
     }
 
@@ -96,11 +105,9 @@
     {
         //Backend authentication logic is ready to handle either NIC/Email/Username for this input field
         [Required(ErrorMessage="This field is required.")]
-        public string Email { get; set; } = string.Empty;
+        public string Identifier { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Password is required.")]
-        [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be least 6 characters")]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).+$", ErrorMessage = "Password must contain a digit, lowercase, uppercase, and special character.")]
-        public string password { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
     }
 }

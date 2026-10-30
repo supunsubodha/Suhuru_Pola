@@ -24,19 +24,33 @@ namespace app.Providers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var user = await response.Content.ReadFromJsonAsync<User>();
+                    var jsonString = await response.Content.ReadAsStringAsync();
 
-                    if (user is not null)
+                    if (string.IsNullOrWhiteSpace(jsonString))
+                    {
+                        _cachedState = new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
+                        return _cachedState;
+                    }
+
+                    var user = System.Text.Json.JsonSerializer.Deserialize<User>(jsonString, new System.Text.Json.JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    if (user is not null && !string.IsNullOrEmpty(user.Email))
                     {
                         var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                        new Claim(ClaimTypes.Email, user.Email)
-                    };
-
-                        foreach (var role in user.Roles)
                         {
-                            claims.Add(new Claim(ClaimTypes.Role, role));
+                            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                            new Claim(ClaimTypes.Email, user.Email)
+                        };
+
+                        if (user.Roles != null)
+                        {
+                            foreach (var role in user.Roles)
+                            {
+                                claims.Add(new Claim(ClaimTypes.Role, role));
+                            }
                         }
 
                         var identity = new ClaimsIdentity(claims, "CookieAuth");
@@ -52,8 +66,10 @@ namespace app.Providers
                     _cachedState = new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine($"[AUTH ERROR]: {ex.Message}");
+                Console.WriteLine($"[AUTH STACK]: {ex.StackTrace}");
                 _cachedState = new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
             }
 
@@ -66,5 +82,4 @@ namespace app.Providers
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
         }
     }
-
 }
