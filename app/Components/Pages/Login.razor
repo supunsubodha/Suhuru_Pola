@@ -3,9 +3,8 @@
 @attribute [StreamRendering]
 @using System.ComponentModel.DataAnnotations
 @using app.Services
-@inject HttpClient Http
-@inject AuthenticationStateProvider AuthStateProvider
-@inject NavigationManager NavigationManager
+
+@inject AuthService AuthService
 
 <PageTitle>Govimithuru | Log in</PageTitle>
 
@@ -52,7 +51,7 @@
                 <!--Message--> 
                 @if (!string.IsNullOrWhiteSpace(errorMessage))
                 {
-                    <p id="message">@errorMessage</p>
+                    <p id="message" class="alert alert-danger" role="alert">@errorMessage</p>
                 }
 
                 <!--Button--> 
@@ -75,31 +74,16 @@
 @code {
     private LoginRequest loginModel = new();
     private string? errorMessage;
-    private async Task HandleLogin()
+private async Task HandleLogin()
     {
         errorMessage = null;
-
-        try
+        var success = await AuthService.LoginAsync(loginModel);
+        
+        if (!success)
         {
-            var response = await Http.PostAsJsonAsync("/api/auth/login", loginModel);
-            if (response.IsSuccessStatusCode)
-            {
-                var customProvider = (CookieAuthStateProvider)AuthStateProvider;
-                customProvider.NotifyAuthStateChanged();
-
-                NavigationManager.NavigateTo("/");
-            }
-            else
-            {
-                errorMessage = "Invalid login attempt";
-            }
-        }
-        catch
-        {
-            errorMessage = "Unable to reach server. Please try again.";
+            errorMessage = "Invalid login attempt";
         }
     }
-
     //Model for login request
     public class LoginRequest
     {

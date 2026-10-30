@@ -17,6 +17,20 @@ namespace app.Services
             _navManager = navManager;
         }
 
+        public async Task<bool> LoginAsync(object loginModel)
+        {
+            var response = await _http.PostAsJsonAsync("/api/auth/login", loginModel);
+
+            if (response.IsSuccessStatusCode)
+            {
+                _authStateProvider.NotifyAuthStateChanged();
+                _navManager.NavigateTo("/");
+                return true;
+            }
+
+            return false;
+        }
+
         public async Task LogoutAsync()
         {
             await _http.PostAsync("/api/auth/logout", null);
