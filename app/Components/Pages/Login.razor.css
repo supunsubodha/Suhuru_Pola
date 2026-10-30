@@ -224,6 +224,7 @@ label {
     font-size: 15px;
 
     color: #333;
+    
 }
 
 
@@ -351,5 +352,9 @@ button i {
 
     .line hr {
         width: 60px;
+    }
+
+    label{
+        text-align:left;
     }
 }

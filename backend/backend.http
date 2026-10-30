@@ -9,11 +9,11 @@ POST {{HostAddress}}/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "farmer@example.com",
-  "userName": "farmer01",
-  "nic": "200012345678",
-  "phoneNumber": 771234567,
-  "password": "Password123!",
+  "email": "supun@subodha.com",
+  "userName": "supunsubodha",
+  "nic": "200444444444",
+  "phoneNumber": 750123041,
+  "password": "StupidPassword123$",
   "role": "Farmer"
 }
 

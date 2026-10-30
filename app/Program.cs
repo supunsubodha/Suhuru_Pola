@@ -23,5 +23,6 @@ builder.Services.AddScoped(sp =>
 
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthStateProvider>();
+builder.Services.AddScoped<AuthService>();
 
 await builder.Build().RunAsync();
