@@ -27,7 +27,6 @@ namespace app.Services
                 _navManager.NavigateTo("/");
                 return true;
             }
-
             return false;
         }
 
