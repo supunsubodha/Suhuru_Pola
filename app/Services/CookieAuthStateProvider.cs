@@ -2,7 +2,7 @@ using System.Net.Http.Json;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Components.Authorization;
 
-namespace app.Providers
+namespace app.Services
 {
     public class CookieAuthStateProvider : AuthenticationStateProvider
     {
