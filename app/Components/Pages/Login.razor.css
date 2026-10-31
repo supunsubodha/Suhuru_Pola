@@ -224,6 +224,10 @@ label {
     font-size: 15px;
 
     color: #333;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 }
 
 
@@ -352,4 +356,11 @@ button i {
     .line hr {
         width: 60px;
     }
+<<<<<<< HEAD
+=======
+
+    label{
+        text-align:left;
+    }
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 }
