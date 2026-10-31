@@ -1,0 +1,64 @@
+@HostAddress = http://localhost:5171
+
+# REST Client examples for the authentication API.
+# The app uses ASP.NET Identity cookie authentication, so keep all requests on the same host
+# and reuse the same HTTP client session to allow the login cookie to be sent on /me and /logout.
+
+### Register a farmer
+POST {{HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "supun@subodha.com",
+  "userName": "supunsubodha",
+  "nic": "200444444444",
+  "phoneNumber": 750123041,
+  "password": "StupidPassword123$",
+  "role": "Farmer"
+}
+
+### Register a buyer
+POST {{HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "buyer@example.com",
+  "userName": "buyer01",
+  "nic": "199912345678",
+  "phoneNumber": 712345678,
+  "password": "Password123!",
+  "role": "Buyer"
+}
+
+### Login with email
+POST {{HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "identifier": "farmer@example.com",
+  "password": "Password123!"
+}
+
+### Login with username
+POST {{HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "identifier": "buyer01",
+  "password": "Password123!"
+}
+
+### Login with NIC
+POST {{HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "identifier": "200012345678",
+  "password": "Password123!"
+}
+
+### Get logged-in user details
+GET {{HostAddress}}/api/auth/me
+
+### Logout current user
+POST {{HostAddress}}/api/auth/logout

@@ -1,19 +1,20 @@
-﻿@page "/"
-@rendermode InteractiveServer
+@page "/"
 @inject NavigationManager NavigationManager
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 
 
 <PageTitle>Govimithuru | Dashboard</PageTitle>
 
 <section id= "welcome-section">
-<h2>Hi, <span id="user-name">@name</span> 👋🏽</h2>
-<h1>Welcome to the vegitable trading portal</h1>
+<h1>Welcome back, <span id="user-name">@currentUser.UserName</span> </h1>
+<h2>Your Agricultural Trading Hub</h2>
 </section>
 <hr>
 <section class = "dashboard-card-section">
 	@foreach (var card in cards)
 	{
-		if (card.Role == role || card.Role == "All"){
+		if (card.Role == "All" || currentUser.Roles.Contains(card.Role)){
 			<button class="dashboard-card" @onclick="() => NavigationManager.NavigateTo(card.URL)">
 				<h1><span class="material-symbols-outlined">@card.Icon</span></h1>
 				<h3>@card.Title</h3>
@@ -21,18 +22,75 @@
 		}
 	}
 </section>
-@code {
-	string name { get; set;} = "Lara Croft";
-	string role { get; set;} = "Farmer";
-	string Icon { get; set;} = "post_add";
-
-	List<DashBoardMenuCard> cards = new List<DashBoardMenuCard>
+@if(currentUser.Roles.Contains("Farmer"))
+{
+<table>
+	<tr>
+		<th id="title-head" colspan="4">Recent Bids</th>
+	</tr>
+	<tr>
+		<th>Product</th>
+		<th>Bidded by</th>
+		<th>Amount (Per Kg)</th>
+		<th>Actions</th>
+	</tr>
+	@foreach (var bid in bids)
 	{
-		new DashBoardMenuCard("Post a New Stock", "Farmer", "#", "post_add"),
-		new DashBoardMenuCard("Manage Stocks", "Farmer", "#", "warehouse"),
-		new DashBoardMenuCard("Browse Market", "Buyer", "#", "search"),
-		new DashBoardMenuCard("Orders and Bids", "All", "#", "shopping_cart"),
-		new DashBoardMenuCard("Profile", "All", "#", "person"),
-		new DashBoardMenuCard("Messages and Alerts", "All", "#", "notifications")
-	};
+		<tr>
+		<td>@bid.Product.Name</td>
+		<td>@bid.User.UserName</td>
+		<td>LKR @bid.Amount</td>
+		<td><button class="btn btn-success" >Accept</button></td>
+		</tr>
+	}
+</table>
+}
+@code {
+	User currentUser = new();
+	List<DashBoardMenuCard> cards = new();
+	List<Product> products = new();
+	List<Bid> bids = new();
+	protected override void OnInitialized()
+	{
+		currentUser = new User
+		{
+			Id = "1",
+			UserName = "Lara Croft",
+			Email = "lara@example.com",
+			PhoneNumber = string.Empty,
+			NIC = string.Empty,
+			IsVerified = true,
+			Roles = new List<string> { "Farmer" }
+		};
+
+		//Dummay data will be placed here until backend developed
+		cards = new List<DashBoardMenuCard>
+		{
+			new DashBoardMenuCard("Active Listings", "Farmer", "#", "post_add"),
+			new DashBoardMenuCard("Pending Bids", "Farmer", "#", "warehouse"),
+			new DashBoardMenuCard("Profile Feedback", "All", "#", "feedback"),
+			new DashBoardMenuCard("My Bids", "Buyer", "#", "gavel"),
+			new DashBoardMenuCard("Saved Listings", "Buyer", "#", "bookmark"),
+			new DashBoardMenuCard("Successful Purchases", "Buyer", "#", "credit_score"),
+			new DashBoardMenuCard("Market Trends", "All", "#", "show_chart")
+		};
+		//Dummy data will be placed here until backend developed
+		products = new List<Product>
+		{
+			new Product(001, "Carrot", 10),
+			new Product(002, "Potato", 14),
+			new Product(003, "Cabbage", 7),
+			new Product(004, "Tomato", 3),
+			new Product(005, "Onion", 14)
+		};
+		//Dummy data will be placed here until backend developed
+		bids = new List<Bid>
+		{
+			new Bid(1, products[0], currentUser, 150.50m, DateTime.Now.AddHours(-2)),
+			new Bid(2, products[1], currentUser, 85.00m, DateTime.Now.AddMinutes(-45)), 
+			new Bid(3, products[3], currentUser, 45.25m, DateTime.Now.AddDays(-1)), 
+			new Bid(4, products[4], currentUser, 210.00m, DateTime.Now.AddMinutes(-5)), 
+			new Bid(5, products[0], currentUser, 160.00m, DateTime.Now) 
+		};
+	}
 }

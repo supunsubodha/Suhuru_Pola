@@ -623,4 +623,96 @@ hr{
         align-items: center;
     }
 
+<<<<<<< HEAD
+=======
+>>>>>>> 0e14bdad969d498493ec3aaf9a82c13931a25e77
+}
+
+/* Container for the overall section */
+/*========================= DESIGN FOR ABOUT, VISION AND MISSION================================*/
+/*==============================================================================================*/
+/* Section Layout */
+
+/* Container: Places cards side-by-side with a small gap */
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;                     /* Small gap between each card */
+  width: 100%;
+  max-width: 1050px;             /* Keeps the section compact */
+  margin: 50px auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Individual Card: Small, compact box with green border */
+.card {
+  flex: 0 0 310px;               /* Small fixed width */
+  width: 310px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 3.5px solid #489b74;    /* Green outer border */
+  padding: 32px 20px 24px 20px;
+  position: relative;             /* Position reference for top logo */
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+}
+
+/* Card Hover Effect: Lifts up slightly on hover */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px -4px rgba(72, 155, 116, 0.18);
+}
+
+/* Logo badge centered directly on top green border */
+.icon-badge {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: #eaf5ea;
+  border: 4.5px solid #ffffff;     /* Cutout effect over green border */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
+
+/* Inner Heading Box with Small Border */
+.haraniya {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e8e3;      /* Small border around heading box */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  color: #1a233a;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 8px 0 16px 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Paragraph Content */
+.card p {
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+  text-align: left;
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 }
