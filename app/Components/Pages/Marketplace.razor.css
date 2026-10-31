@@ -1,1 +1,68 @@
-﻿
+﻿/* Custom Search Bar Styling */
+.form-control {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
+/* Product Card Styling & Hover Effects */
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Image Box Customization */
+.card-img-top {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+/* Typography Details */
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Action Button Polish */
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-success:hover {
+    background-color: #146c43;
+    border-color: #13653f;
+}
+
+.btn-success:active {
+    transform: scale(0.98);
+}
+
+/* Custom Warning Alert */
+.alert-warning {
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+}
