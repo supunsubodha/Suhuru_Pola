@@ -25,9 +25,19 @@
 </p>
 
 @code{
+<<<<<<< HEAD
+    [CascadingParameter]
+    private HttpContext? HttpContext { get; set; }
+
+=======
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
     private string? RequestId { get; set; }
     private bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
     protected override void OnInitialized() =>
+<<<<<<< HEAD
+        RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
+=======
         RequestId = Activity.Current?.Id;
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 }

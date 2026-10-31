@@ -1,9 +1,18 @@
+<<<<<<< HEAD
+<Project Sdk="Microsoft.NET.Sdk.Web">
+=======
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+<<<<<<< HEAD
+    <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+  </PropertyGroup>
+
+=======
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
   </PropertyGroup>
 
@@ -13,4 +22,5 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.14" PrivateAssets="all" />
   </ItemGroup>
 
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 </Project>

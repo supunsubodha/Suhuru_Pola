@@ -1,10 +1,16 @@
 ﻿@page "/login"
+<<<<<<< HEAD
+@layout Layout.EmptyLayout
+@attribute [StreamRendering]
+@inject NavigationManager NavigationManager
+=======
 @layout EmptyLayout
 @attribute [StreamRendering]
 @using System.ComponentModel.DataAnnotations
 @using app.Services
 
 @inject AuthService AuthService
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 
 <PageTitle>Govimithuru | Log in</PageTitle>
 
@@ -30,6 +36,36 @@
             <h2>Login to Your Account</h2> 
  
             <!--Login Form--> 
+<<<<<<< HEAD
+            <form id="loginForm" @onsubmit="HandleLogin" @onsubmit:preventDefault="true"> 
+ 
+                <!--NIC--> 
+                <label for="nic">NIC Number/Username</label> 
+ 
+                <div class="input-box"> 
+                    <i class="fa-regular fa-id-card"></i> 
+                    <input type="text" name="nic" placeholder="Enter NIC (e.g. 200112345678)" required> 
+                </div> 
+ 
+                <!--Password--> 
+                <label for="password">Password</label> 
+ 
+                <div class="input-box"> 
+                    <i class="fa-regular fa-user"></i> 
+                    <input type="password" name="password" placeholder="Enter your password(e.g. mypassword123)" required> 
+                </div> 
+ 
+                <!--Message--> 
+                <p id="message"></p> 
+ 
+                <!--Button--> 
+                <button type="submit"> 
+                    <i class="fa-solid fa-lock"></i>  
+                    Login 
+                </button> 
+ 
+            </form> 
+=======
             <EditForm id="loginForm" Model="loginModel" OnValidSubmit="HandleLogin"> 
 
                 <!--NIC--> 
@@ -60,6 +96,7 @@
                     Login 
                 </button> 
             </EditForm>
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
  
             <p class="register"> 
                 Don't have an account? 
@@ -72,6 +109,11 @@
 
 
 @code {
+<<<<<<< HEAD
+    private void HandleLogin()
+    {
+        NavigationManager.NavigateTo("/dashboard");
+=======
     private LoginRequest loginModel = new();
     private string? errorMessage;
 private async Task HandleLogin()
@@ -93,5 +135,6 @@ private async Task HandleLogin()
 
         [Required(ErrorMessage = "Password is required.")]
         public string Password { get; set; } = string.Empty;
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
     }
 }

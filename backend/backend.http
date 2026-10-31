@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+@backend_HostAddress = http://localhost:5171
+
+GET {{backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+=======
 @HostAddress = http://localhost:5171
 
 # REST Client examples for the authentication API.
@@ -62,3 +70,4 @@ GET {{HostAddress}}/api/auth/me
 
 ### Logout current user
 POST {{HostAddress}}/api/auth/logout
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974

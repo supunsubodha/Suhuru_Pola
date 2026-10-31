@@ -1,7 +1,12 @@
 @page "/"
+<<<<<<< HEAD
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+=======
 @inject NavigationManager NavigationManager
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 
 
 <PageTitle>Govimithuru | Dashboard</PageTitle>
@@ -14,7 +19,11 @@
 <section class = "dashboard-card-section">
 	@foreach (var card in cards)
 	{
+<<<<<<< HEAD
+		if (card.Role == currentUser.Role || card.Role == "All"){
+=======
 		if (card.Role == "All" || currentUser.Roles.Contains(card.Role)){
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 			<button class="dashboard-card" @onclick="() => NavigationManager.NavigateTo(card.URL)">
 				<h1><span class="material-symbols-outlined">@card.Icon</span></h1>
 				<h3>@card.Title</h3>
@@ -22,7 +31,11 @@
 		}
 	}
 </section>
+<<<<<<< HEAD
+@if(currentUser.Role == "Farmer")
+=======
 @if(currentUser.Roles.Contains("Farmer"))
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 {
 <table>
 	<tr>
@@ -46,6 +59,15 @@
 </table>
 }
 @code {
+<<<<<<< HEAD
+	User currentUser;
+    List<DashBoardMenuCard> cards;
+    List<Product> products;
+    List<Bid> bids;
+	protected override void OnInitialized()
+	{
+		currentUser = new User(001, "Lara Croft", "Farmer");
+=======
 	User currentUser = new();
 	List<DashBoardMenuCard> cards = new();
 	List<Product> products = new();
@@ -62,6 +84,7 @@
 			IsVerified = true,
 			Roles = new List<string> { "Farmer" }
 		};
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 
 		//Dummay data will be placed here until backend developed
 		cards = new List<DashBoardMenuCard>

@@ -1,6 +1,10 @@
+<<<<<<< HEAD
+﻿<div class="top-row ps-3 navbar navbar-dark">
+=======
 ﻿@inject AuthService AuthService
 
 <div class="top-row ps-3 navbar navbar-dark">
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
     <div class="container-fluid">
         <img src="/favicon.png" alt="Govimithuru Logo" class="logo"/>
         <a class="navbar-brand" href="/dashboard">Govimithuru</a>
@@ -33,6 +37,13 @@
                 <span class="material-symbols-outlined me-3">person</span>Profile
             </NavLink>
         </div>
+<<<<<<< HEAD
+        <button class="logout-button btn btn-danger" href="#" style="display:flex; align-items:center;justify-content:center;"><span class="material-symbols-outlined me-2">logout</span>Logout</button>
+    </nav>
+</div>
+@code {
+    
+=======
         <button @onclick="HandleLogout" class="logout-button btn btn-danger" href="#" style="display:flex; align-items:center;justify-content:center;"><span class="material-symbols-outlined me-2">logout</span>Logout</button>
     </nav>
 </div>
@@ -41,4 +52,5 @@
     {
         await AuthService.LogoutAsync();
     }
+>>>>>>> d8d409568f88564d647c8098b139d07db5186974
 }
