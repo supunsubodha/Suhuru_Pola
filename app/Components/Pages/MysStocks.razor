@@ -1,7 +1,354 @@
-﻿@page "/mystocks"
+﻿
+@page "/mystocks"
 
-<h3>My Stocks</h3>
+<PageTitle>My Stocks - Govimithuru</PageTitle>
+
+<div class="stocks-page">
+
+    <div class="page-heading">
+        <div>
+            <h2>My Stocks</h2>
+            <p>Manage your agricultural products and inventory.</p>
+        </div>
+        <span class="farmer-label">Farmer Dashboard</span>
+    </div>
+
+    <!-- STOCK SUMMARY -->
+    <div class="summary-grid">
+
+        <div class="summary-card">
+            <span>Total Products</span>
+            <h3>@Stocks.Count</h3>
+        </div>
+
+        <div class="summary-card">
+            <span>Available Stock</span>
+            <h3>@Stocks.Count(s => s.Quantity > 5)</h3>
+        </div>
+
+        <div class="summary-card low-card">
+            <span>Low Stock</span>
+            <h3>@Stocks.Count(s => s.Quantity > 0 && s.Quantity <= 5)</h3>
+        </div>
+
+        <div class="summary-card out-card">
+            <span>Out of Stock</span>
+            <h3>@Stocks.Count(s => s.Quantity == 0)</h3>
+        </div>
+
+    </div>
+
+    <!-- ADD PRODUCT FORM -->
+    <div class="stock-form">
+
+        <h3>@(IsEditing ? "Update Product" : "Add New Product")</h3>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text"
+                       @bind="ProductName"
+                       placeholder="e.g. Tomatoes" />
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <select @bind="Category">
+                    <option value="">Select Category</option>
+                    <option>Vegetables</option>
+                    <option>Fruits</option>
+                    <option>Rice and Grains</option>
+                    <option>Spices</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Quantity</label>
+                <input type="number"
+                       min="0"
+                       @bind="Quantity" />
+            </div>
+
+            <div class="form-group">
+                <label>Unit</label>
+                <select @bind="Unit">
+                    <option value="kg">Kilograms (kg)</option>
+                    <option value="g">Grams (g)</option>
+                    <option value="Items">Items</option>
+                    <option value="Packs">Packs</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Price per Unit (LKR)</label>
+                <input type="number"
+                       min="0"
+                       step="0.01"
+                       @bind="Price" />
+            </div>
+
+        </div>
+
+        <div class="form-actions">
+
+            <button class="save-btn" @onclick="SaveStock">
+                @(IsEditing ? "Update Product" : "Add Product")
+            </button>
+
+            <button class="cancel-btn" @onclick="ResetForm">
+                Clear
+            </button>
+
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Message))
+        {
+            <p class="form-message">@Message</p>
+        }
+
+    </div>
+
+    <!-- PRODUCT TABLE -->
+    <div class="stock-table-section">
+
+        <div class="table-heading">
+            <div>
+                <h3>Product Inventory</h3>
+                <p>View and manage your listed products.</p>
+            </div>
+
+            <input class="search-box"
+                   type="text"
+                   placeholder="Search products..."
+                   @bind="SearchTerm" />
+        </div>
+
+        <div class="table-wrapper">
+
+            <table class="stock-table">
+
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Price / Unit</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var stock in FilteredStocks)
+                    {
+                        <tr @key="stock.Id">
+
+                            <td>
+                                <strong>@stock.ProductName</strong>
+                            </td>
+
+                            <td>@stock.Category</td>
+
+                            <td>@stock.Quantity @stock.Unit</td>
+
+                            <td>LKR @stock.Price.ToString("N2")</td>
+
+                            <td>
+                                @if (stock.Quantity == 0)
+                                {
+                                    <span class="status out">
+                                        Out of Stock
+                                    </span>
+                                }
+                                else if (stock.Quantity <= 5)
+                                {
+                                    <span class="status low">
+                                        Low Stock
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="status available">
+                                        Available
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+                                <button class="edit-btn"
+                                        @onclick="() => EditStock(stock)">
+                                    Edit
+                                </button>
+
+                                <button class="delete-btn"
+                                        @onclick="() => DeleteStock(stock.Id)">
+                                    Delete
+                                </button>
+                            </td>
+
+                        </tr>
+                    }
+
+                    @if (!FilteredStocks.Any())
+                    {
+                        <tr>
+                            <td colspan="6" class="empty-message">
+                                No products found. Add your first product!
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
 
 @code {
+
+    // PRODUCT LIST
+    private List<StockItem> Stocks = new();
+
+    // FORM FIELDS
+    private string ProductName = "";
+    private string Category = "";
+    private string Unit = "kg";
+    private int Quantity = 0;
+    private decimal Price = 0;
+
+    // PAGE CONTROLS
+    private string SearchTerm = "";
+    private string Message = "";
+
+    private bool IsEditing = false;
+    private int EditingId = 0;
+    private int NextId = 1;
+
+    // SEARCH PRODUCTS
+    private List<StockItem> FilteredStocks =>
+        string.IsNullOrWhiteSpace(SearchTerm)
+            ? Stocks
+            : Stocks.Where(s =>
+                s.ProductName.Contains(
+                    SearchTerm,
+                    StringComparison.OrdinalIgnoreCase
+                )).ToList();
+
+    // ADD OR UPDATE PRODUCT
+    private void SaveStock()
+    {
+        if (string.IsNullOrWhiteSpace(ProductName) ||
+            string.IsNullOrWhiteSpace(Category))
+        {
+            Message = "Please enter the product name and category.";
+            return;
+        }
+
+        if (Quantity < 0 || Price <= 0)
+        {
+            Message = "Enter a valid quantity and price.";
+            return;
+        }
+
+        if (IsEditing)
+        {
+            var product = Stocks.FirstOrDefault(
+                s => s.Id == EditingId
+            );
+
+            if (product != null)
+            {
+                product.ProductName = ProductName.Trim();
+                product.Category = Category;
+                product.Quantity = Quantity;
+                product.Unit = Unit;
+                product.Price = Price;
+            }
+
+            Message = "Product updated successfully!";
+        }
+        else
+        {
+            Stocks.Add(new StockItem
+            {
+                Id = NextId++,
+                ProductName = ProductName.Trim(),
+                Category = Category,
+                Quantity = Quantity,
+                Unit = Unit,
+                Price = Price
+            });
+
+            Message = "Product added successfully!";
+        }
+
+        ResetForm();
+    }
+
+    // EDIT PRODUCT
+    private void EditStock(StockItem stock)
+    {
+        EditingId = stock.Id;
+
+        ProductName = stock.ProductName;
+        Category = stock.Category;
+        Quantity = stock.Quantity;
+        Unit = stock.Unit;
+        Price = stock.Price;
+
+        IsEditing = true;
+        Message = "";
+    }
+
+    // DELETE PRODUCT
+    private void DeleteStock(int id)
+    {
+        var product = Stocks.FirstOrDefault(
+            s => s.Id == id
+        );
+
+        if (product != null)
+        {
+            Stocks.Remove(product);
+            Message = "Product deleted successfully!";
+
+            if (IsEditing && EditingId == id)
+            {
+                ResetForm();
+                Message = "Product deleted successfully!";
+            }
+        }
+    }
+
+    // CLEAR FORM
+    private void ResetForm()
+    {
+        ProductName = "";
+        Category = "";
+        Quantity = 0;
+        Unit = "kg";
+        Price = 0;
+
+        IsEditing = false;
+        EditingId = 0;
+    }
+
+    // PRODUCT MODEL
+    private class StockItem
+    {
+        public int Id { get; set; }
+        public string ProductName { get; set; } = "";
+        public string Category { get; set; } = "";
+        public int Quantity { get; set; }
+        public string Unit { get; set; } = "kg";
+        public decimal Price { get; set; }
+    }
 
 }
