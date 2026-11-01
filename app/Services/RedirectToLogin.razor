@@ -1,0 +1,12 @@
+@inject NavigationManager NavigationManager
+
+@code {
+    protected override void OnInitialized()
+    {
+        var relativePath = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        if (!relativePath.StartsWith("login", StringComparison.OrdinalIgnoreCase))
+        {
+            NavigationManager.NavigateTo("/login", replace: true);
+        }
+    }
+}

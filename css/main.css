@@ -456,6 +456,127 @@ nav a:hover {
 .hidden {
   display: none;
 }
+/* ===========================
+   Footer
+=========================== */
+
+.footer{
+    background:rgba(215,250,195,1);
+    color:#333;
+    padding:50px 80px 20px;
+    border-top:4px solid #4CAF50;
+}
+
+.footer-container{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:40px;
+    padding: 10px 0px 10px 25px;
+    background-color:rgba(0,150,0,0.1);
+}
+
+.footer-about{
+    flex:2;
+    min-width:280px;
+}
+
+.footer-about h2{
+    color:#2E7D32;
+    margin-bottom:10px;
+}
+
+.footer-about h4{
+    margin-bottom:15px;
+}
+
+.footer-about p{
+    line-height:1.6;
+}
+
+.social-links{
+    margin-top:20px;
+}
+
+.social-links a{
+    text-decoration:none;
+    color:#2E7D32;
+    margin-right:20px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.social-links a:hover{
+    color:#66BB6A;
+}
+
+.footer-links{
+    flex:1;
+    min-width:180px;
+}
+
+.footer-links h3{
+    color:#2E7D32;
+    margin-bottom:20px;
+}
+
+.footer-links ul{
+    list-style:none;
+}
+
+.footer-links ul li{
+    margin-bottom:12px;
+}
+
+.footer-links ul li a{
+    text-decoration:none;
+    color:#444;
+    transition:0.3s;
+}
+
+.footer-links ul li a:hover{
+    color:#2E7D32;
+}
+
+.footer-contact{
+    flex:1;
+    min-width:220px;
+}
+
+.footer-contact h3{
+    color:#2E7D32;
+    margin-bottom:20px;
+}
+
+.footer-contact p{
+    margin-bottom:15px;
+}
+
+hr{
+    margin:35px 0;
+    border:none;
+    border-top:1px solid #d8d8d8;
+}
+
+.footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.bottom-links a{
+    text-decoration:none;
+    color:#555;
+    margin:0 8px;
+    transition:0.3s;
+}
+
+.bottom-links a:hover{
+    color:#2E7D32;
+}
+
+
 
 /* ==========================================
    RESPONSIVE DESIGN (MOBILE)
@@ -505,4 +626,92 @@ nav a:hover {
     }
 
 >>>>>>> 0e14bdad969d498493ec3aaf9a82c13931a25e77
+}
+
+/* Container for the overall section */
+/*========================= DESIGN FOR ABOUT, VISION AND MISSION================================*/
+/*==============================================================================================*/
+/* Section Layout */
+
+/* Container: Places cards side-by-side with a small gap */
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;                     /* Small gap between each card */
+  width: 100%;
+  max-width: 1050px;             /* Keeps the section compact */
+  margin: 50px auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Individual Card: Small, compact box with green border */
+.card {
+  flex: 0 0 310px;               /* Small fixed width */
+  width: 310px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 3.5px solid #489b74;    /* Green outer border */
+  padding: 32px 20px 24px 20px;
+  position: relative;             /* Position reference for top logo */
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+}
+
+/* Card Hover Effect: Lifts up slightly on hover */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px -4px rgba(72, 155, 116, 0.18);
+}
+
+/* Logo badge centered directly on top green border */
+.icon-badge {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: #eaf5ea;
+  border: 4.5px solid #ffffff;     /* Cutout effect over green border */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
+
+/* Inner Heading Box with Small Border */
+.haraniya {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e8e3;      /* Small border around heading box */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  color: #1a233a;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 8px 0 16px 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Paragraph Content */
+.card p {
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+  text-align: left;
 }
