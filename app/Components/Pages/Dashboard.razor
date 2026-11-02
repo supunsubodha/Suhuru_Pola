@@ -7,7 +7,14 @@
 <PageTitle>Govimithuru | Dashboard</PageTitle>
 
 <section id= "welcome-section">
-<h1>Welcome back, <span id="user-name">@currentUser.UserName</span> </h1>
+
+<AuthorizeView>
+	<Authorized>
+		<h1>Welcome back, <span id="user-name">@context.User.Identity.Name</span> </h1>
+	</Authorized>
+</AuthorizeView>
+
+
 <h2>Your Agricultural Trading Hub</h2>
 </section>
 <hr>
