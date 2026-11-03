@@ -1,0 +1,34 @@
+.dashboard-card {
+    background-color: rgb(255, 255, 255);
+    border-color: lightgray;
+    border-radius: 10px;
+    color: #333333;
+    box-sizing: border-box;
+    text-align: center;
+    min-height: 100px;
+    margin: 8px;
+}
+    .dashboard-card > h1 {
+        display: flex;
+        justify-content: flex-start;
+        color: gray;
+    }
+
+    .dashboard-card > h3 {
+        color: gray;
+    }
+
+    .dashboard-card .material-symbols-outlined {
+        line-height: 1;
+    }
+
+    .dashboard-card:hover {
+        background-color: #40916C;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+        .dashboard-card:hover > h1,
+        .dashboard-card:hover > h3,
+        .dashboard-card:hover .material-symbols-outlined {
+            color: #F0F1F2;
+        }
