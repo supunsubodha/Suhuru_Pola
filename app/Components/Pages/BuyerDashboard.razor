@@ -6,8 +6,16 @@
 	@foreach (var card in cards)
 	{
 		<button class="dashboard-card" @onclick="() => NavigationManager.NavigateTo(card.URL)">
-			<h1><span class="material-symbols-outlined">@card.Icon</span></h1>
-			<h3>@card.Title</h3>
+			<span class="dashboard-card-icon material-symbols-outlined">@card.Icon</span>
+			@if (card.Title == "Market Trends")
+			{
+				<span class="dashboard-card-value material-symbols-outlined">@card.DisplayValue</span>
+			}
+			else
+			{
+				<span class="dashboard-card-value">@card.DisplayValue</span>
+			}
+			<span class="dashboard-card-title">@card.Title</span>
 		</button>
 	}
 </section>
@@ -18,11 +26,11 @@
     protected override void OnInitialized() {
 
         cards = new List<DashBoardMenuCard > {
-			new DashBoardMenuCard("Profile Feedback", "#", "feedback"),
-			new DashBoardMenuCard("My Bids", "#", "gavel"),
-			new DashBoardMenuCard("Saved Listings", "#", "bookmark"),
-			new DashBoardMenuCard("Successful Purchases", "#", "credit_score"),
-			new DashBoardMenuCard("Market Trends", "#", "show_chart")
+			new DashBoardMenuCard("Profile Feedback", "4.8", "#", "feedback"),
+			new DashBoardMenuCard("My Bids", "5", "#", "gavel"),
+			new DashBoardMenuCard("Saved Listings", "10", "#", "bookmark"),
+			new DashBoardMenuCard("Successful Purchases", "3", "#", "credit_score"),
+			new DashBoardMenuCard("Market Trends", "moving", "#", "show_chart")
         };
     }
 }

@@ -6,8 +6,16 @@
 	@foreach (var card in cards)
 	{
 		<button class="dashboard-card" @onclick="() => NavigationManager.NavigateTo(card.URL)">
-			<h1><span class="material-symbols-outlined">@card.Icon</span></h1>
-			<h3>@card.Title</h3>
+			<span class="dashboard-card-icon material-symbols-outlined">@card.Icon</span>
+			@if (card.Title == "Market Trends")
+			{
+				<span class="dashboard-card-value material-symbols-outlined">@card.DisplayValue</span>
+			}
+			else
+			{
+				<span class="dashboard-card-value">@card.DisplayValue</span>
+			}
+			<span class="dashboard-card-title">@card.Title</span>
 		</button>
 	}
 </section>
@@ -41,10 +49,10 @@
     protected override void OnInitialized() {
 
         cards = new List<DashBoardMenuCard > {
-            new DashBoardMenuCard("Active Listings", "#", "post_add"),
-            new DashBoardMenuCard("Pending Bids", "#", "warehouse"),
-            new DashBoardMenuCard("Profile Feedback", "#", "feedback"), 
-            new DashBoardMenuCard("Market Trends", "#", "show_chart")
+            new DashBoardMenuCard("Active Listings", "15", "#", "post_add"),
+            new DashBoardMenuCard("Pending Bids", "10", "#", "warehouse"),
+            new DashBoardMenuCard("Profile Feedback", "4.8", "#", "feedback"), 
+            new DashBoardMenuCard("Market Trends", "moving", "#", "show_chart")
         };
         
         //Dummy data will be placed here until backend developed
