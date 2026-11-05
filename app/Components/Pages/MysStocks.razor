@@ -1,5 +1,6 @@
-﻿@attribute [Authorize (role = "Farmer")]
-@page "/mystocks"
+﻿@page "/mystocks"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize (Roles = "Farmer")]
 
 <PageTitle>My Stocks - Govimithuru</PageTitle>
 

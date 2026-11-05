@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Authorization
 @attribute [Authorize(Roles = "Farmer")]
 @inject NavigationManager NavigationManager	
 @foreach (var card in cards)
