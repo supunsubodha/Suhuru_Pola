@@ -18,66 +18,17 @@
 <h2>Your Agricultural Trading Hub</h2>
 </section>
 <hr>
-<section class = "dashboard-card-section">
-	<AuthorizeView Roles = "Buyer">
-		<Authorized>
-			<BuyerDashboard />
-		</Authorized>
-	</AuthorizeView>
+<AuthorizeView Roles = "Buyer">
+	<Authorized>
+		<BuyerDashboard />
+	</Authorized>
+</AuthorizeView>
 
-	<AuthorizeView Roles = "Farmer">
-		<Authorized>
-			<FarmerDashboard />
-		</Authorized>
-	</AuthorizeView>
-</section>
-@if(currentUser.Roles.Contains("Farmer"))
-{
-<table>
-	<tr>
-		<th id="title-head" colspan="4">Recent Bids</th>
-	</tr>
-	<tr>
-		<th>Product</th>
-		<th>Bidded by</th>
-		<th>Amount (Per Kg)</th>
-		<th>Actions</th>
-	</tr>
-	@foreach (var bid in bids)
-	{
-		<tr>
-		<td>@bid.Product.Name</td>
-		<td>@bid.User.UserName</td>
-		<td>LKR @bid.Amount</td>
-		<td><button class="btn btn-success" >Accept</button></td>
-		</tr>
-	}
-</table>
-}
+<AuthorizeView Roles = "Farmer">
+	<Authorized>
+		<FarmerDashboard />
+	</Authorized>
+</AuthorizeView>
 @code {
-	User currentUser = new();
-	List<DashBoardMenuCard> cards = new();
-	List<Product> products = new();
-	List<Bid> bids = new();
-	protected override void OnInitialized()
-	{
-		//Dummy data will be placed here until backend developed
-		products = new List<Product>
-		{
-			new Product(001, "Carrot", 10),
-			new Product(002, "Potato", 14),
-			new Product(003, "Cabbage", 7),
-			new Product(004, "Tomato", 3),
-			new Product(005, "Onion", 14)
-		};
-		//Dummy data will be placed here until backend developed
-		bids = new List<Bid>
-		{
-			new Bid(1, products[0], currentUser, 150.50m, DateTime.Now.AddHours(-2)),
-			new Bid(2, products[1], currentUser, 85.00m, DateTime.Now.AddMinutes(-45)), 
-			new Bid(3, products[3], currentUser, 45.25m, DateTime.Now.AddDays(-1)), 
-			new Bid(4, products[4], currentUser, 210.00m, DateTime.Now.AddMinutes(-5)), 
-			new Bid(5, products[0], currentUser, 160.00m, DateTime.Now) 
-		};
-	}
+
 }

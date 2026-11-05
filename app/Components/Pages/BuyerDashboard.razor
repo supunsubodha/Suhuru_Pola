@@ -1,13 +1,16 @@
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize(Roles = "Buyer")]
-@inject NavigationManager NavigationManager	
-@foreach (var card in cards)
+@inject NavigationManager NavigationManager
+
+<section class="dashboard-card-section">
+	@foreach (var card in cards)
 	{
 		<button class="dashboard-card" @onclick="() => NavigationManager.NavigateTo(card.URL)">
 			<h1><span class="material-symbols-outlined">@card.Icon</span></h1>
 			<h3>@card.Title</h3>
 		</button>
 	}
+</section>
 
 @code {
     private List <DashBoardMenuCard> cards = new();

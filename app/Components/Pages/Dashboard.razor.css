@@ -16,21 +16,7 @@
     gap: 10px;
     justify-content: space-around;
 }
-/*Table styles*/
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin:20px auto 20px auto;
-    border-bottom: 1px solid #ddd;
-    font-size:larger;
-}
-tr{
-    border-bottom:1px solid #ddd;
-}
-th, td {
-    color: #454748;
-    padding:10px;
-}
+
 #title-head {
     color:#40916C;
     font-size:xx-large;
