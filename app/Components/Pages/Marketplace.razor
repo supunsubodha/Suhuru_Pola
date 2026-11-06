@@ -1,7 +1,125 @@
 ﻿@page "/marketplace"
 
-<h3>Marketplace</h3>
+<div class="marketplace-container">
+    <header class="marketplace-header">
+        <h2>🌾 Marketplace - Subhuru Pola</h2>
+        <div class="cart-summary">
+            🛒 Cart: <strong>@cartCount items</strong>
+        </div>
+    </header>
+
+    @if (!string.IsNullOrEmpty(statusMessage))
+    {
+        <div class="alert-banner">
+            @statusMessage
+        </div>
+    }
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+        @foreach (var item in marketplaceItems)
+        {
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="category-badge">@item.Category</span>
+                    <span class="image-icon">📦</span>
+                </div>
+                
+                <div class="product-info">
+                    <h4>@item.Title</h4>
+                    <p class="seller">Seller: <span>@item.Seller</span></p>
+                    <p class="description">@item.Description</p>
+                    
+                    <div class="price-section">
+                        <span class="price">LKR @item.Price.ToString("N2")</span>
+                        <span class="unit">per @item.Unit</span>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-cart" @onclick="() => AddToCart(item)">
+                            🛒 Add to Cart
+                        </button>
+                        <button class="btn btn-bid" @onclick="() => OpenBidModal(item)">
+                            🏷️ Bids / Offer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Bid / Offer Modal Dialog -->
+    @if (selectedItemForBid != null)
+    {
+        <div class="modal-backdrop">
+            <div class="modal-card">
+                <h3>Place a Bid / Offer</h3>
+                <p>Item: <strong>@selectedItemForBid.Title</strong></p>
+                <p>Asking Price: <strong>LKR @selectedItemForBid.Price.ToString("N2")</strong></p>
+
+                <div class="form-group">
+                    <label for="bidAmount">Your Offer Price (LKR):</label>
+                    <input id="bidAmount" type="number" class="form-input" @bind="userBidAmount" min="1" />
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn btn-submit" @onclick="SubmitBid">Submit Offer</button>
+                    <button class="btn btn-cancel" @onclick="CloseBidModal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
 @code {
+    private int cartCount = 0;
+    private string statusMessage = string.Empty;
 
+    private MarketplaceItem? selectedItemForBid = null;
+    private decimal userBidAmount = 0;
+
+    private List<MarketplaceItem> marketplaceItems = new List<MarketplaceItem>()
+    {
+        new MarketplaceItem { Id = 1, Title = "Organic Fresh Tomatoes", Category = "Vegetables", Price = 350.00m, Unit = "kg", Seller = "Nimal Organic Farm", Description = "Freshly harvested red tomatoes without pesticides." },
+        new MarketplaceItem { Id = 2, Title = "Keeri Samba Rice (50kg)", Category = "Grains", Price = 12500.00m, Unit = "bag", Seller = "Polonnaruwa Mills", Description = "Premium quality polished Keeri Samba paddy rice." },
+        new MarketplaceItem { Id = 3, Title = "Ceylon Black Tea (Grade A)", Category = "Tea & Spices", Price = 1800.00m, Unit = "kg", Seller = "Hill Country Estate", Description = "High-grown Ceylon tea leaves ready for export or retail." },
+        new MarketplaceItem { Id = 4, Title = "Fresh Red Onions", Category = "Vegetables", Price = 420.00m, Unit = "kg", Seller = "Jaffna Produce Hub", Description = "Cleaned and sorted locally grown red onions." }
+    };
+
+    private void AddToCart(MarketplaceItem item)
+    {
+        cartCount++;
+        statusMessage = $"Added '{item.Title}' to your shopping cart!";
+    }
+
+    private void OpenBidModal(MarketplaceItem item)
+    {
+        selectedItemForBid = item;
+        userBidAmount = item.Price;
+    }
+
+    private void CloseBidModal()
+    {
+        selectedItemForBid = null;
+    }
+
+    private void SubmitBid()
+    {
+        if (selectedItemForBid != null && userBidAmount > 0)
+        {
+            statusMessage = $"Bid of LKR {userBidAmount:N2} submitted for '{selectedItemForBid.Title}'!";
+            CloseBidModal();
+        }
+    }
+
+    public class MarketplaceItem
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public string Unit { get; set; } = string.Empty;
+        public string Seller { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+    }
 }
